@@ -5,6 +5,7 @@ lang    =  "es"
 category = "balance"
 widget   = "balance-electrico"
 query   = "start_date=2019-01-01T00:00&end_date=2019-01-31T23:59&time_trunc=day"
+
 #Headers para la peticion GET
 headers = {
     'Accept': 'application/json',
