@@ -1,10 +1,21 @@
 import requests
 
+from datetime import datetime, timedelta
+
 #Parametros del API - Estos no van bajo la variable 'params' sino en el mismo endpoint.
-lang    =  "es"
-category = "balance"
-widget   = "balance-electrico"
-query   = "start_date=2019-01-01T00:00&end_date=2019-01-31T23:59&time_trunc=day"
+lang    =  input('¿En español (es) o en inglés (en)?') 
+category = input('¿Balance, demanda, generación o intercambio?') 
+widget   = input()
+
+#Creación de la fecha de consulta.
+restaDia = float(input())
+now = datetime.now()
+
+ultima_fecha = (now - timedelta(days = restaDia)).strftime('%Y-%m-%d')
+hoy = now.strftime('%Y-%m-%d')
+
+query = f"start_date={ultima_fecha}T00:00&end_date={hoy}T23:59&time_trunc=day"
+
 
 #Headers para la peticion GET
 headers = {
@@ -17,4 +28,3 @@ headers = {
 endpoint = f"https://apidatos.ree.es/{lang}/datos/{category}/{widget}?{query}"
 response = requests.get(url = endpoint, headers = headers)
 data = response.json()
-data
