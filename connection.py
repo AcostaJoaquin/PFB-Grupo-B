@@ -8,11 +8,12 @@ category = input('¿Balance, demanda, generación o intercambio?')
 widget   = input()
 
 #Creación de la fecha de consulta.
-restaDia = float(input())
-now = datetime.now()
+restaDia = float(input("¿Cuantos días atrás?: ______________"))
+input_año = int(input("¿Qué año?: ______________"))
 
-ultima_fecha = (now - timedelta(days = restaDia)).strftime('%Y-%m-%d')
-hoy = now.strftime('%Y-%m-%d')
+now = datetime.now()
+ultima_fecha = (now - timedelta(days = restaDia)).replace(year = input_año).strftime('%Y-%m-%d')
+hoy = now.replace(year = input_año).strftime('%Y-%m-%d')
 
 query = f"start_date={ultima_fecha}T00:00&end_date={hoy}T23:59&time_trunc=day"
 
