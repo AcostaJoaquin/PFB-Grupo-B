@@ -1,25 +1,184 @@
 ,nombre,tipo de energía,Valores,Porcentaje,Fecha actualización
-0,Generación renovable,Renovable,312154.062,1,19/09/2024
-1,Generación renovable,Renovable,302020.274,1,20/09/2024
-2,Generación renovable,Renovable,306732.67999999993,1,21/09/2024
-3,Generación renovable,Renovable,281726.193,1,22/09/2024
-4,Generación renovable,Renovable,337889.96199999994,1,23/09/2024
-5,Generación renovable,Renovable,311495.577,1,24/09/2024
-6,Generación renovable,Renovable,424117.054,1,25/09/2024
-7,Generación renovable,Renovable,512315.54600000003,1,26/09/2024
-8,Generación no renovable,No-Renovable,412496.21700000006,1,19/09/2024
-9,Generación no renovable,No-Renovable,414069.227,1,20/09/2024
-10,Generación no renovable,No-Renovable,349119.3439999999,1,21/09/2024
-11,Generación no renovable,No-Renovable,329686.471,1,22/09/2024
-12,Generación no renovable,No-Renovable,347109.32899999997,1,23/09/2024
-13,Generación no renovable,No-Renovable,360628.2230000001,1,24/09/2024
-14,Generación no renovable,No-Renovable,310129.24,1,25/09/2024
-15,Generación no renovable,No-Renovable,283969.995,1,26/09/2024
-16,Demanda en b.c.,Demanda en b.c.,693793.9789999999,1,19/09/2024
-17,Demanda en b.c.,Demanda en b.c.,683548.201,1,20/09/2024
-18,Demanda en b.c.,Demanda en b.c.,606059.024,1,21/09/2024
-19,Demanda en b.c.,Demanda en b.c.,559892.664,1,22/09/2024
-20,Demanda en b.c.,Demanda en b.c.,654081.591,1,23/09/2024
-21,Demanda en b.c.,Demanda en b.c.,665369.3,1,24/09/2024
-22,Demanda en b.c.,Demanda en b.c.,687738.694,1,25/09/2024
-23,Demanda en b.c.,Demanda en b.c.,694998.2409999999,1,26/09/2024
+0,Renewable generation,Renewable,283293.855,1,28/07/2022
+1,Renewable generation,Renewable,315791.70100000006,1,29/07/2022
+2,Renewable generation,Renewable,358667.54600000003,1,30/07/2022
+3,Renewable generation,Renewable,312348.7135,1,31/07/2022
+4,Renewable generation,Renewable,306444.62,1,01/08/2022
+5,Renewable generation,Renewable,287468.0025,1,02/08/2022
+6,Renewable generation,Renewable,310015.799,1,03/08/2022
+7,Renewable generation,Renewable,358387.9290000001,1,04/08/2022
+8,Renewable generation,Renewable,401643.374,1,05/08/2022
+9,Renewable generation,Renewable,347761.76949999994,1,06/08/2022
+10,Renewable generation,Renewable,307240.391,1,07/08/2022
+11,Renewable generation,Renewable,298534.915,1,08/08/2022
+12,Renewable generation,Renewable,321734.18950000004,1,09/08/2022
+13,Renewable generation,Renewable,291325.50350000005,1,10/08/2022
+14,Renewable generation,Renewable,276278.443,1,11/08/2022
+15,Renewable generation,Renewable,247774.01949999997,1,12/08/2022
+16,Renewable generation,Renewable,284670.754,1,13/08/2022
+17,Renewable generation,Renewable,310229.3505,1,14/08/2022
+18,Renewable generation,Renewable,296672.2915,1,15/08/2022
+19,Renewable generation,Renewable,345796.86549999996,1,16/08/2022
+20,Renewable generation,Renewable,351380.85449999996,1,17/08/2022
+21,Renewable generation,Renewable,374002.33949999994,1,18/08/2022
+22,Renewable generation,Renewable,343456.5375,1,19/08/2022
+23,Renewable generation,Renewable,271373.661,1,20/08/2022
+24,Renewable generation,Renewable,301016.4745,1,21/08/2022
+25,Renewable generation,Renewable,371158.7525,1,22/08/2022
+26,Renewable generation,Renewable,305518.9645,1,23/08/2022
+27,Renewable generation,Renewable,267830.78699999995,1,24/08/2022
+28,Renewable generation,Renewable,306000.4175000001,1,25/08/2022
+29,Renewable generation,Renewable,361960.36950000003,1,26/08/2022
+30,Renewable generation,Renewable,278880.01050000003,1,27/08/2022
+31,Renewable generation,Renewable,268119.4015,1,28/08/2022
+32,Renewable generation,Renewable,277837.629,1,29/08/2022
+33,Renewable generation,Renewable,220283.95950000003,1,30/08/2022
+34,Renewable generation,Renewable,257326.51300000004,1,31/08/2022
+35,Renewable generation,Renewable,203921.9865,1,01/09/2022
+36,Renewable generation,Renewable,251710.54650000005,1,02/09/2022
+37,Renewable generation,Renewable,270099.432,1,03/09/2022
+38,Renewable generation,Renewable,316312.15799999994,1,04/09/2022
+39,Renewable generation,Renewable,333799.16399999993,1,05/09/2022
+40,Renewable generation,Renewable,323705.281,1,06/09/2022
+41,Renewable generation,Renewable,295460.805,1,07/09/2022
+42,Renewable generation,Renewable,250146.842,1,08/09/2022
+43,Renewable generation,Renewable,263179.34500000003,1,09/09/2022
+44,Renewable generation,Renewable,221116.52000000002,1,10/09/2022
+45,Renewable generation,Renewable,259373.66499999998,1,11/09/2022
+46,Renewable generation,Renewable,281111.01149999996,1,12/09/2022
+47,Renewable generation,Renewable,358628.67350000003,1,13/09/2022
+48,Renewable generation,Renewable,263663.50950000004,1,14/09/2022
+49,Renewable generation,Renewable,218470.8285,1,15/09/2022
+50,Renewable generation,Renewable,355196.7645,1,16/09/2022
+51,Renewable generation,Renewable,352263.084,1,17/09/2022
+52,Renewable generation,Renewable,278355.73549999995,1,18/09/2022
+53,Renewable generation,Renewable,251048.72999999998,1,19/09/2022
+54,Renewable generation,Renewable,285689.59499999986,1,20/09/2022
+55,Renewable generation,Renewable,261579.05150000003,1,21/09/2022
+56,Renewable generation,Renewable,240785.72,1,22/09/2022
+57,Renewable generation,Renewable,272644.85000000003,1,23/09/2022
+58,Renewable generation,Renewable,335498.8675,1,24/09/2022
+59,Renewable generation,Renewable,325415.2484999999,1,25/09/2022
+60,Renewable generation,Renewable,323890.3995,1,26/09/2022
+61,Non-renewable generation,Non-renewable,541602.8709999999,1,28/07/2022
+62,Non-renewable generation,Non-renewable,549641.6039999999,1,29/07/2022
+63,Non-renewable generation,Non-renewable,452619.715,1,30/07/2022
+64,Non-renewable generation,Non-renewable,464526.20650000003,1,31/07/2022
+65,Non-renewable generation,Non-renewable,561544.5080000001,1,01/08/2022
+66,Non-renewable generation,Non-renewable,596591.3575000002,1,02/08/2022
+67,Non-renewable generation,Non-renewable,579049.2170000001,1,03/08/2022
+68,Non-renewable generation,Non-renewable,538032.6719999999,1,04/08/2022
+69,Non-renewable generation,Non-renewable,489635.21,1,05/08/2022
+70,Non-renewable generation,Non-renewable,474639.0665,1,06/08/2022
+71,Non-renewable generation,Non-renewable,464671.55999999994,1,07/08/2022
+72,Non-renewable generation,Non-renewable,549399.614,1,08/08/2022
+73,Non-renewable generation,Non-renewable,555099.6945,1,09/08/2022
+74,Non-renewable generation,Non-renewable,559207.3495000001,1,10/08/2022
+75,Non-renewable generation,Non-renewable,575185.3880000002,1,11/08/2022
+76,Non-renewable generation,Non-renewable,590708.2715,1,12/08/2022
+77,Non-renewable generation,Non-renewable,534973.026,1,13/08/2022
+78,Non-renewable generation,Non-renewable,438980.4145,1,14/08/2022
+79,Non-renewable generation,Non-renewable,436711.0435000001,1,15/08/2022
+80,Non-renewable generation,Non-renewable,432331.15650000004,1,16/08/2022
+81,Non-renewable generation,Non-renewable,401297.0594999999,1,17/08/2022
+82,Non-renewable generation,Non-renewable,374467.6805000001,1,18/08/2022
+83,Non-renewable generation,Non-renewable,414496.1955000001,1,19/08/2022
+84,Non-renewable generation,Non-renewable,482017.3400000001,1,20/08/2022
+85,Non-renewable generation,Non-renewable,417190.9565,1,21/08/2022
+86,Non-renewable generation,Non-renewable,415364.46150000003,1,22/08/2022
+87,Non-renewable generation,Non-renewable,524395.9615,1,23/08/2022
+88,Non-renewable generation,Non-renewable,568647.127,1,24/08/2022
+89,Non-renewable generation,Non-renewable,526084.3415,1,25/08/2022
+90,Non-renewable generation,Non-renewable,470006.3975,1,26/08/2022
+91,Non-renewable generation,Non-renewable,507685.06049999996,1,27/08/2022
+92,Non-renewable generation,Non-renewable,481744.26749999996,1,28/08/2022
+93,Non-renewable generation,Non-renewable,550447.6730000001,1,29/08/2022
+94,Non-renewable generation,Non-renewable,631106.4255,1,30/08/2022
+95,Non-renewable generation,Non-renewable,596057.6,1,31/08/2022
+96,Non-renewable generation,Non-renewable,621565.1704999999,1,01/09/2022
+97,Non-renewable generation,Non-renewable,600596.7135,1,02/09/2022
+98,Non-renewable generation,Non-renewable,498101.959,1,03/09/2022
+99,Non-renewable generation,Non-renewable,406362.91199999995,1,04/09/2022
+100,Non-renewable generation,Non-renewable,480511.67000000004,1,05/09/2022
+101,Non-renewable generation,Non-renewable,534534.604,1,06/09/2022
+102,Non-renewable generation,Non-renewable,558500.6559999998,1,07/09/2022
+103,Non-renewable generation,Non-renewable,577042.895,1,08/09/2022
+104,Non-renewable generation,Non-renewable,568903.3150000001,1,09/09/2022
+105,Non-renewable generation,Non-renewable,546989.4039999999,1,10/09/2022
+106,Non-renewable generation,Non-renewable,495973.56499999994,1,11/09/2022
+107,Non-renewable generation,Non-renewable,542997.5495,1,12/09/2022
+108,Non-renewable generation,Non-renewable,463772.5544999999,1,13/09/2022
+109,Non-renewable generation,Non-renewable,543229.7785,1,14/09/2022
+110,Non-renewable generation,Non-renewable,602104.6085,1,15/09/2022
+111,Non-renewable generation,Non-renewable,487330.4575,1,16/09/2022
+112,Non-renewable generation,Non-renewable,421876.794,1,17/09/2022
+113,Non-renewable generation,Non-renewable,408567.6405,1,18/09/2022
+114,Non-renewable generation,Non-renewable,528677.774,1,19/09/2022
+115,Non-renewable generation,Non-renewable,546589.3159999999,1,20/09/2022
+116,Non-renewable generation,Non-renewable,551629.3015,1,21/09/2022
+117,Non-renewable generation,Non-renewable,556924.5020000001,1,22/09/2022
+118,Non-renewable generation,Non-renewable,537107.071,1,23/09/2022
+119,Non-renewable generation,Non-renewable,387419.3055,1,24/09/2022
+120,Non-renewable generation,Non-renewable,333368.2895,1,25/09/2022
+121,Non-renewable generation,Non-renewable,412806.23749999993,1,26/09/2022
+122,Demand at busbars,Demand at busbars,800376.7220000001,1,28/07/2022
+123,Demand at busbars,Demand at busbars,793992.2349999999,1,29/07/2022
+124,Demand at busbars,Demand at busbars,718385.4669999998,1,30/07/2022
+125,Demand at busbars,Demand at busbars,675415.017,1,31/07/2022
+126,Demand at busbars,Demand at busbars,782866.189,1,01/08/2022
+127,Demand at busbars,Demand at busbars,800030.8280000002,1,02/08/2022
+128,Demand at busbars,Demand at busbars,795863.7289999999,1,03/08/2022
+129,Demand at busbars,Demand at busbars,789564.7329999998,1,04/08/2022
+130,Demand at busbars,Demand at busbars,772886.4140000003,1,05/08/2022
+131,Demand at busbars,Demand at busbars,699119.0980000001,1,06/08/2022
+132,Demand at busbars,Demand at busbars,647889.3660000002,1,07/08/2022
+133,Demand at busbars,Demand at busbars,727811.301,1,08/08/2022
+134,Demand at busbars,Demand at busbars,745979.959,1,09/08/2022
+135,Demand at busbars,Demand at busbars,754636.552,1,10/08/2022
+136,Demand at busbars,Demand at busbars,750843.9419999997,1,11/08/2022
+137,Demand at busbars,Demand at busbars,750786.746,1,12/08/2022
+138,Demand at busbars,Demand at busbars,698246.392,1,13/08/2022
+139,Demand at busbars,Demand at busbars,629884.4559999998,1,14/08/2022
+140,Demand at busbars,Demand at busbars,622660.0160000001,1,15/08/2022
+141,Demand at busbars,Demand at busbars,680755.9379999997,1,16/08/2022
+142,Demand at busbars,Demand at busbars,677139.6639999999,1,17/08/2022
+143,Demand at busbars,Demand at busbars,659330.261,1,18/08/2022
+144,Demand at busbars,Demand at busbars,661916.618,1,19/08/2022
+145,Demand at busbars,Demand at busbars,633699.2189999999,1,20/08/2022
+146,Demand at busbars,Demand at busbars,602791.8389999999,1,21/08/2022
+147,Demand at busbars,Demand at busbars,703153.961,1,22/08/2022
+148,Demand at busbars,Demand at busbars,730634.865,1,23/08/2022
+149,Demand at busbars,Demand at busbars,738558.4590000001,1,24/08/2022
+150,Demand at busbars,Demand at busbars,736603.211,1,25/08/2022
+151,Demand at busbars,Demand at busbars,725562.0629999998,1,26/08/2022
+152,Demand at busbars,Demand at busbars,656630.1310000003,1,27/08/2022
+153,Demand at busbars,Demand at busbars,615465.7210000001,1,28/08/2022
+154,Demand at busbars,Demand at busbars,727200.545,1,29/08/2022
+155,Demand at busbars,Demand at busbars,750924.4670000002,1,30/08/2022
+156,Demand at busbars,Demand at busbars,740231.753,1,31/08/2022
+157,Demand at busbars,Demand at busbars,731641.3390000002,1,01/09/2022
+158,Demand at busbars,Demand at busbars,732227.67,1,02/09/2022
+159,Demand at busbars,Demand at busbars,642236.01,1,03/09/2022
+160,Demand at busbars,Demand at busbars,596575.6009999999,1,04/09/2022
+161,Demand at busbars,Demand at busbars,711057.5020000001,1,05/09/2022
+162,Demand at busbars,Demand at busbars,727527.085,1,06/09/2022
+163,Demand at busbars,Demand at busbars,731678.0,1,07/09/2022
+164,Demand at busbars,Demand at busbars,715619.5729999999,1,08/09/2022
+165,Demand at busbars,Demand at busbars,721661.277,1,09/09/2022
+166,Demand at busbars,Demand at busbars,653804.8119999999,1,10/09/2022
+167,Demand at busbars,Demand at busbars,619822.057,1,11/09/2022
+168,Demand at busbars,Demand at busbars,743105.9479999999,1,12/09/2022
+169,Demand at busbars,Demand at busbars,746416.1500000001,1,13/09/2022
+170,Demand at busbars,Demand at busbars,722541.723,1,14/09/2022
+171,Demand at busbars,Demand at busbars,713473.613,1,15/09/2022
+172,Demand at busbars,Demand at busbars,708799.0819999998,1,16/09/2022
+173,Demand at busbars,Demand at busbars,619334.8339999998,1,17/09/2022
+174,Demand at busbars,Demand at busbars,574254.1880000001,1,18/09/2022
+175,Demand at busbars,Demand at busbars,685476.6619999998,1,19/09/2022
+176,Demand at busbars,Demand at busbars,704300.2310000001,1,20/09/2022
+177,Demand at busbars,Demand at busbars,700070.02,1,21/09/2022
+178,Demand at busbars,Demand at busbars,695597.3889999999,1,22/09/2022
+179,Demand at busbars,Demand at busbars,689988.523,1,23/09/2022
+180,Demand at busbars,Demand at busbars,602468.746,1,24/09/2022
+181,Demand at busbars,Demand at busbars,547492.9339999999,1,25/09/2022
+182,Demand at busbars,Demand at busbars,638740.351,1,26/09/2022
