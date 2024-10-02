@@ -1,40 +1,31 @@
 import streamlit as st
-
-import numpy as np
-import pandas as pd
-import requests
+from vista.balance import main as balance_page
+from vista.demanda import main as demanda_page
+from vista.generacion import main as generacion_page
+from vista.intercambio import main as intercambio_page
+from datetime import datetime, timedelta
 
 def main():
-
     st.title('REData API')
-    st.text('Datos del cuadro de mandro de la red eléctrica de España')
+    st.text('Datos del cuadro de mando de la red eléctrica de España')
 
-
-    #Barra lateral
+    # Barra lateral para la navegación
     sidebar_opciones = ['Balance', 'Demanda', 'Generación', 'Intercambio']
-    selected_option = st.sidebar.selectbox('Seleccione una opción', sidebar_opciones)
+    selected_option = st.sidebar.selectbox('Dato a consultar', sidebar_opciones)
 
-    # Llamada a la API
+    # Selección del periodo de tiempo
+    tiempo_opciones = ['7 días', '14 días', '30 días']
+    selected_time = st.sidebar.selectbox('Periodo de tiempo', tiempo_opciones)
 
-    ### get_balance_data, get_balance_data, get_generacion_data, get_intercambio_data por determinar.
+    # Llamar a la función de la página seleccionada y pasar el periodo de tiempo
     if selected_option == 'Balance':
-        balance_data = get_balance_data()
-        st.subheader('Balance de energía eléctrica')
-        st.dataframe(balance_data)
-
+        balance_page(selected_time)
     elif selected_option == 'Demanda':
-        demand_data = get_demanda_data()
-        st.subheader('Demanda corregida')
-        st.dataframe(demand_data)
-
+        demanda_page(selected_time)
     elif selected_option == 'Generación':
-        generation_data = get_generacion_data()
-        st.subheader('Generación')
-        st.dataframe(generation_data)
-
+        generacion_page(selected_time)
     elif selected_option == 'Intercambio':
-        exchange_data = get_intercambio_data
-    pass
+        intercambio_page(selected_time)
 
 if __name__ == "__main__":
     main()
