@@ -5,7 +5,7 @@ from datetime import timedelta
 
 def get_balance_data():
     script_dir = os.path.dirname(__file__)
-    data_path = os.path.join(script_dir, '..', '..', 'Notebooks', 'Obtencion datos', 'balance_electrico_7d.csv')
+    data_path = os.path.join(script_dir, '..', '..', 'Notebooks', 'Obtencion datos', 'balance_electrico.csv')
     print(f"Data path: {data_path}") 
     return pd.read_csv(data_path)
 
