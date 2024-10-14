@@ -105,17 +105,8 @@ def balance_datos(lang, input_año, restaDia):
         'Porcentaje': lista_porcentajes,
         'Fecha actualización': lista_fechas
     })
-
-    # Cargar el CSV
-    df = pd.read_csv('Notebooks/Obtencion datos/balance_electrico.csv', sep=',', parse_dates=['Fecha actualización'])
-
-    # Crear una columna 'id' usando el índice del DataFrame
-    df['id'] = df.index + 1  # Genera un id único basado en el índice
-
-    # Renombrar columnas si es necesario
-    df.rename(columns={'tipo de energía': 'tipo_energia'}, inplace=True)
-
-    # Leer el archivo de configuración
+    
+     # Leer el archivo de configuración
     config = configparser.ConfigParser()
     config.read('Notebooks/SQL/config.ini')
 
@@ -123,6 +114,17 @@ def balance_datos(lang, input_año, restaDia):
     host = config['mysql']['host']
     user = config['mysql']['user']
     password = config['mysql']['password']
+    
+    
+    # Cargar el CSV con la interpretación correcta de las fechas
+    df = pd.read_csv('Notebooks/Obtencion datos//balance_electrico.csv', sep=',', 
+                    parse_dates=['Fecha actualización'], dayfirst=True)
+
+    # Crear una columna 'id' usando el índice del DataFrame
+    df['id'] = df.index + 1  # Genera un id único basado en el índice
+
+    # Renombrar columnas si es necesario
+    df.rename(columns={'tipo de energía': 'tipo_energia'}, inplace=True)
 
     # Conectar a la base de datos
     conn = mysql.connector.connect(
@@ -137,7 +139,7 @@ def balance_datos(lang, input_año, restaDia):
 
     # Insertar o actualizar datos en la tabla usando el id
     for index, row in df.iterrows():
-        cursor.execute("""
+        cursor.execute(""" 
             INSERT INTO balance (id, nombre, tipo_energia, valores, porcentaje, fecha_actualizacion)
             VALUES (%s, %s, %s, %s, %s, %s)
             ON DUPLICATE KEY UPDATE
@@ -156,6 +158,7 @@ def balance_datos(lang, input_año, restaDia):
     conn.close()
 
     print("Datos insertados o actualizados en la tabla 'balance' con éxito.")
+
 
     return df_balance
 
