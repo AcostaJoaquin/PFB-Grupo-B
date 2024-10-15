@@ -3,11 +3,10 @@ import numpy as np
 import pandas as pd
 import plotly.express as px
 
-from modules.ml_func import *
 import statsmodels
 import os
 from datetime import datetime, timedelta
-from connection.py import demanda_datos
+from connection import demanda_datos
 
 
 def ml_app():
@@ -26,7 +25,7 @@ def ml_app():
 
     input_año = año - 1
     restaDia = 365
-    demanda_datos(lang=es)
+    demanda_datos(lang = es)
 
     demanda_df = pd.read_csv("../../Obtencion datos/demanda_evolucion.csv")
 
