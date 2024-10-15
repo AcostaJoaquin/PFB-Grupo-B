@@ -69,10 +69,10 @@ def balance_datos(lang, input_año, restaDia):
     now = datetime.now()
     ultima_fecha = (now - timedelta(days=restaDia)).replace(year=input_año).strftime('%Y-%m-%d')
     hoy = now.replace(year=input_año).strftime('%Y-%m-%d')
-
+    
     query = f"start_date={ultima_fecha}T00:00&end_date={hoy}T23:59&time_trunc=day"
     endpoint = f"https://apidatos.ree.es/{lang}/datos/balance/balance-electrico?{query}"
-    response = requests.get(url=endpoint, headers={'Authorization': 'Bearer YOUR_API_KEY'})  # Asegúrate de incluir tus headers correctamente
+    response = requests.get(url=endpoint)
     data = response.json()
 
     lista_nombres = []
@@ -89,15 +89,13 @@ def balance_datos(lang, input_año, restaDia):
             for i in info['attributes']['values']:
                 valor = i['value']
                 porcentaje = i['percentage']
-                fecha = pd.to_datetime(i['datetime']).strftime("%d/%m/%Y")  # Asegúrate de formatear correctamente
-
+                fecha = pd.to_datetime(i['datetime']).strftime("%d/%m/%Y")
                 lista_nombres.append(nombre)
                 lista_tipos.append(tipo)
                 lista_valores.append(valor)
                 lista_porcentajes.append(porcentaje)
                 lista_fechas.append(fecha)
 
-    # Crear DataFrame
     df_balance = pd.DataFrame({
         'nombre': lista_nombres,
         'tipo de energía': lista_tipos,
@@ -105,28 +103,23 @@ def balance_datos(lang, input_año, restaDia):
         'Porcentaje': lista_porcentajes,
         'Fecha actualización': lista_fechas
     })
+    df_balance.to_csv('Notebooks/Obtencion datos/balance_electrico.csv', index=False)
     
-     # Leer el archivo de configuración
     config = configparser.ConfigParser()
     config.read('Notebooks/SQL/config.ini')
 
-    # Obtener los valores del archivo de configuración
     host = config['mysql']['host']
     user = config['mysql']['user']
     password = config['mysql']['password']
     
     
-    # Cargar el CSV con la interpretación correcta de las fechas
     df = pd.read_csv('Notebooks/Obtencion datos//balance_electrico.csv', sep=',', 
                     parse_dates=['Fecha actualización'], dayfirst=True)
 
-    # Crear una columna 'id' usando el índice del DataFrame
-    df['id'] = df.index + 1  # Genera un id único basado en el índice
+    df['id'] = df.index + 1 
 
-    # Renombrar columnas si es necesario
     df.rename(columns={'tipo de energía': 'tipo_energia'}, inplace=True)
 
-    # Conectar a la base de datos
     conn = mysql.connector.connect(
         host=host,
         user=user,
@@ -134,10 +127,8 @@ def balance_datos(lang, input_año, restaDia):
         database='red_electrica'
     )
 
-    # Crear cursor
     cursor = conn.cursor()
 
-    # Insertar o actualizar datos en la tabla usando el id
     for index, row in df.iterrows():
         cursor.execute(""" 
             INSERT INTO balance (id, nombre, tipo_energia, valores, porcentaje, fecha_actualizacion)
@@ -150,13 +141,13 @@ def balance_datos(lang, input_año, restaDia):
             fecha_actualizacion = VALUES(fecha_actualizacion)
         """, (row['id'], row['nombre'], row['tipo_energia'], row['Valores'], row['Porcentaje'], row['Fecha actualización']))
 
-    # Confirmar los cambios
     conn.commit()
 
-    # Cerrar conexión
+
     cursor.close()
     conn.close()
 
+    
     print("Datos insertados o actualizados en la tabla 'balance' con éxito.")
 
 
@@ -189,7 +180,6 @@ def demanda_datos(lang, input_año, restaDia):
             valor = content['value']
             fecha = content['datetime']
             fecha = pd.to_datetime(fecha).strftime("%d/%m/%Y")
-
             datetime_lista.append(fecha)
             value_lista.append(valor)
 
