@@ -20,9 +20,9 @@ def get_balance_data():
 
 def main(selected_time):
     st.title('Balance de energía eléctrica')
-    balance_data = get_balance_data()
+    df_bal = get_balance_data()
 
-    balance_data['Fecha actualización'] = pd.to_datetime(balance_data['Fecha actualización']).dt.tz_localize(None)
+    df_bal['Fecha actualización'] = pd.to_datetime(df_bal['Fecha actualización']).dt.tz_localize(None)
 
     today = pd.to_datetime('today').tz_localize('UTC')
     if selected_time == '7 días':
@@ -34,13 +34,12 @@ def main(selected_time):
 
     date_limit = date_limit.tz_localize(None)
 
-    filtered_data = balance_data[balance_data['Fecha actualización'] >= date_limit]
+    filtered_data = df_bal[df_bal['Fecha actualización'] >= date_limit]
 
     st.dataframe(filtered_data)
 
 
     df_bal = get_balance_data()
-    st.dataframe(df_bal)
 
     colores_personalizados = px.colors.qualitative.Plotly + px.colors.qualitative.Pastel + px.colors.qualitative.Set1
     colores_personalizados = colores_personalizados[:30]
@@ -49,11 +48,57 @@ def main(selected_time):
             x = 'Fecha actualización',
             y = 'Valores',
             color = 'nombre',
-            color_discrete_sequence = colores_personalizados,
-    )
+            color_discrete_sequence = colores_personalizados)
     fig_all.update_layout(title = 'Evolución de energía diaría unificada')
     st.plotly_chart(figure_or_data = fig_all,
                 use_container_width = True)
+
+
+    fig_reno = px.line(data_frame = df_bal[df_bal['tipo de energía'] == 'Renovable'],
+        x = 'Fecha actualización',
+        y = 'Valores',
+        color = 'nombre',
+        color_discrete_sequence = colores_personalizados)
+
+    fig_reno.update_layout(title = 'Evolución de energía diaría renovable')
+    st.plotly_chart(figure_or_data = fig_reno,
+                use_container_width = True)
+
+    fig_no_reno=px.line(data_frame = df_bal[df_bal['tipo de energía'] == 'No-Renovable'],
+        x = 'Fecha actualización',
+        y = 'Valores',
+        color = 'nombre',
+        color_discrete_sequence = colores_personalizados)
+
+    fig_no_reno.update_layout(title = 'Evolución de energía diaría no renovable')
+    st.plotly_chart(figure_or_data = fig_no_reno,
+                use_container_width = True)
+
+
+    fig_dbc = px.line(data_frame = df_bal[df_bal['tipo de energía'] == 'Demanda en b.c.'],
+        x = 'Fecha actualización',
+        y = 'Valores',
+        color = 'nombre',
+        color_discrete_sequence = colores_personalizados
+)
+
+    fig_dbc.update_layout(title = 'Evolución de energía diaría de demanda en barra central')
+    st.plotly_chart(figure_or_data = fig_dbc,
+                use_container_width = True)
+
+
+    fig_box2 = px.box(data_frame=df_bal,
+       x = 'Valores',
+       y = 'tipo de energía',
+       color = 'tipo de energía',
+       color_discrete_sequence = colores_personalizados)
+    fig_box2.update_layout(title = 'Boxplot con outliers')
+    st.plotly_chart(figure_or_data = fig_box2,
+                use_container_width = True)
+
+
+
+
 
 
 
