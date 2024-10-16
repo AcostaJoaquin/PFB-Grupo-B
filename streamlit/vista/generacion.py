@@ -3,6 +3,8 @@ import pandas as pd
 import os
 from datetime import datetime, timedelta
 
+import plotly.express as px
+
 def get_generacion_data():
     script_dir = os.path.dirname(__file__)
     data_path = os.path.join(script_dir, '..', '..', 'Notebooks', 'Obtencion datos', 'generacion_estructura.csv')
@@ -32,6 +34,37 @@ def main(selected_time):
 
     st.dataframe(filtered_generacion_data)
 
-if __name__ == "__main__":
-    selected_time = st.selectbox("Selecciona un periodo de tiempo", ['7 días', '14 días', '30 días', 'Sin filtro'])
-    main(selected_time)
+    fig =px.line(data_frame = generacion_data, x = 'Fecha actualización', y = 'Valores', color = 'nombre',
+        line_group= 'tipo de energía',
+        title= 'Tipo de energía',
+        markers = True)
+    
+    st.plotly_chart(fig,use_container_width=True)
+
+    fig2 = px.histogram(data_frame= generacion_data,
+             x = 'Valores',
+             y = 'Porcentaje',
+             color = 'tipo de energía',
+             title= 'Histograma por su tipo de energía',
+             facet_col= 'tipo de energía',
+             nbins= 50)
+    
+    st.plotly_chart(fig2,use_container_width=True)
+
+    fig3 = px.box(data_frame = generacion_data,
+       x = 'Valores',
+       y = 'nombre',
+       color= 'nombre')
+    st.plotly_chart(fig3,use_container_width=True)
+
+    fig4 = px.box(data_frame = generacion_data,
+        x = 'Valores',
+        y =  'tipo de energía',
+        title = 'Box tipo de energía',
+        color =  'tipo de energía')
+    
+    st.plotly_chart(fig4,use_container_width=True)
+
+    if __name__ == "__main__":
+        selected_time = st.selectbox("Selecciona un periodo de tiempo", ['7 días', '14 días', '30 días', 'Sin filtro'])
+        main(selected_time)
