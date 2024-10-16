@@ -25,7 +25,7 @@ headers = {
 def create_database():
     # Leer el archivo de configuración
     config = configparser.ConfigParser()
-    config.read('Notebooks/SQL/config.ini')
+    config.read('../../Notebooks/SQL/config.ini')
 
     # Obtener los valores del archivo de configuración
     host = config['mysql']['host']
@@ -103,17 +103,17 @@ def balance_datos(lang, input_año, restaDia):
         'Porcentaje': lista_porcentajes,
         'Fecha actualización': lista_fechas
     })
-    df_balance.to_csv('Notebooks/Obtencion datos/balance_electrico.csv', index=False)
+    df_balance.to_csv('../../Notebooks/Obtencion datos/balance_electrico.csv', index=False)
     
     config = configparser.ConfigParser()
-    config.read('Notebooks/SQL/config.ini')
+    config.read('../../Notebooks/SQL/config.ini')
 
     host = config['mysql']['host']
     user = config['mysql']['user']
     password = config['mysql']['password']
     
     
-    df = pd.read_csv('Notebooks/Obtencion datos//balance_electrico.csv', sep=',', 
+    df = pd.read_csv('../../Notebooks/Obtencion datos//balance_electrico.csv', sep=',', 
                     parse_dates=['Fecha actualización'], dayfirst=True)
 
     df['id'] = df.index + 1 
@@ -188,11 +188,11 @@ def demanda_datos(lang, input_año, restaDia):
         'Energía_consumida': value_lista,
     })
 
-    df_demanda.to_csv('Notebooks/Obtencion datos/demanda_evolucion.csv', index=False)
+    df_demanda.to_csv('../../Notebooks/Obtencion datos/demanda_evolucion.csv', index=False)
 
     # Leer el archivo de configuración
     config = configparser.ConfigParser()
-    config.read('Notebooks/SQL/config.ini')
+    config.read('../../Notebooks/SQL/config.ini')
 
     # Obtener los valores del archivo de configuración
     host = config['mysql']['host']
@@ -200,11 +200,11 @@ def demanda_datos(lang, input_año, restaDia):
     password = config['mysql']['password']
 
     # Cargar el CSV y mostrar las primeras filas para depuración
-    df_raw = pd.read_csv('Notebooks/Obtencion datos/demanda_evolucion.csv', sep=',')
+    df_raw = pd.read_csv('../../Notebooks/Obtencion datos/demanda_evolucion.csv', sep=',')
 
     # Cargar el CSV con el nombre correcto de la columna para la fecha
     # Ajustamos el formato de la fecha a 'dd/mm/yyyy' al cargar el CSV
-    df = pd.read_csv('Notebooks/Obtencion datos/demanda_evolucion.csv', sep=',', 
+    df = pd.read_csv('../../Notebooks/Obtencion datos/demanda_evolucion.csv', sep=',', 
                     parse_dates=['Fecha actualización'], 
                     dayfirst=True)  # Asegurarse de que se interprete correctamente
 
@@ -303,11 +303,11 @@ def generacion_datos(lang,input_año, restaDia):
     df_generacion["Porcentaje"]           = lista_porcentajes
     df_generacion["Fecha actualización"]  = lista_fechas
     
-    df_generacion.to_csv('Notebooks/Obtencion datos/generacion_estructura.csv')
+    df_generacion.to_csv('../../Notebooks/Obtencion datos/generacion_estructura.csv')
 
     # Leer el archivo de configuración
     config = configparser.ConfigParser()
-    config.read('Notebooks/SQL/config.ini')
+    config.read('../../Notebooks/SQL/config.ini')
 
     # Obtener los valores del archivo de configuración
     host = config['mysql']['host']
@@ -315,7 +315,7 @@ def generacion_datos(lang,input_año, restaDia):
     password = config['mysql']['password']
 
     # Cargar el CSV
-    df = pd.read_csv('Notebooks/Obtencion datos/generacion_estructura.csv', sep=',', parse_dates=['Fecha actualización'])
+    df = pd.read_csv('../../Notebooks/Obtencion datos/generacion_estructura.csv', sep=',', parse_dates=['Fecha actualización'])
 
     # Renombrar las columnas para que coincidan con la estructura de la tabla
     df.rename(columns={
@@ -421,11 +421,11 @@ def intercambio_datos(lang,input_año, restaDia):
     df_intercambio["Porcentaje"]           = lista_porcentajes
     df_intercambio["Fecha actualización"]  = lista_fechas
 
-    df_intercambio.to_csv('Notebooks/Obtencion datos/intercambio_electrico.csv')
+    df_intercambio.to_csv('../../Notebooks/Obtencion datos/intercambio_electrico.csv')
              
     # Leer el archivo de configuración
     config = configparser.ConfigParser()
-    config.read('Notebooks/SQL/config.ini')
+    config.read('../../Notebooks/SQL/config.ini')
 
     # Obtener los valores del archivo de configuración
     host = config['mysql']['host']
@@ -433,7 +433,7 @@ def intercambio_datos(lang,input_año, restaDia):
     password = config['mysql']['password']
 
     # Cargar el CSV
-    df = pd.read_csv('Notebooks/Obtencion datos/intercambio_electrico.csv', sep=',', parse_dates=['Fecha actualización'])
+    df = pd.read_csv('../../Notebooks/Obtencion datos/intercambio_electrico.csv', sep=',', parse_dates=['Fecha actualización'])
 
     # Renombrar las columnas para que coincidan con la estructura de la tabla
     df.rename(columns={

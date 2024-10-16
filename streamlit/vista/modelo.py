@@ -6,10 +6,10 @@ import plotly.express as px
 import statsmodels
 import os
 from datetime import datetime, timedelta
-from connection import demanda_datos
+from .connection import demanda_datos
 
 
-def ml_app():
+def main():
     
     st.subheader(body = "Modelo de Machine Learning :robot_face:")
 
@@ -25,7 +25,7 @@ def ml_app():
 
     input_año = año - 1
     restaDia = 365
-    demanda_datos(lang = es)
+    demanda_datos(lang = "es")
 
     demanda_df = pd.read_csv("../../Obtencion datos/demanda_evolucion.csv")
 
@@ -46,3 +46,5 @@ def ml_app():
 
 
 
+if __name__ == "__main__":
+    main()
