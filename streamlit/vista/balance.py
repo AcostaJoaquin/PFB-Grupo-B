@@ -1,13 +1,22 @@
 import streamlit as st
 import pandas as pd
+
 import os
+
 from datetime import timedelta
+
+import plotly.express as px
+import plotly.colors as pc
 
 def get_balance_data():
     script_dir = os.path.dirname(__file__)
     data_path = os.path.join(script_dir, '..', '..', 'Notebooks', 'Obtencion datos', 'balance_electrico.csv')
-    print(f"Data path: {data_path}") 
+    print(f"Data path: {data_path}")
     return pd.read_csv(data_path)
+
+
+
+
 
 def main(selected_time):
     st.title('Balance de energía eléctrica')
@@ -28,6 +37,25 @@ def main(selected_time):
     filtered_data = balance_data[balance_data['Fecha actualización'] >= date_limit]
 
     st.dataframe(filtered_data)
+
+
+    df_bal = get_balance_data()
+    st.dataframe(df_bal)
+
+    colores_personalizados = px.colors.qualitative.Plotly + px.colors.qualitative.Pastel + px.colors.qualitative.Set1
+    colores_personalizados = colores_personalizados[:30]
+
+    fig_all = px.line(data_frame = df_bal,
+            x = 'Fecha actualización',
+            y = 'Valores',
+            color = 'nombre',
+            color_discrete_sequence = colores_personalizados,
+    )
+    fig_all.update_layout(title = 'Evolución de energía diaría unificada')
+    st.plotly_chart(figure_or_data = fig_all,
+                use_container_width = True)
+
+
 
 if __name__ == "__main__":
     main()
