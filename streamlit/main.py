@@ -28,7 +28,7 @@ def main():
     elif selected_option == 'Intercambio':
         intercambio_page(selected_time)
     elif selected_option == 'Modelo':
-        modelo_page(selected_time)
+        modelo_page()
 
 if __name__ == "__main__":
     main()
