@@ -14,10 +14,6 @@ def get_balance_data():
     print(f"Data path: {data_path}")
     return pd.read_csv(data_path)
 
-
-
-
-
 def main(selected_time):
     st.title('Balance de energía eléctrica')
     df_bal = get_balance_data()
@@ -36,15 +32,10 @@ def main(selected_time):
 
     filtered_data = df_bal[df_bal['Fecha actualización'] >= date_limit]
 
-    st.dataframe(filtered_data)
-
-
-    df_bal = get_balance_data()
-
     colores_personalizados = px.colors.qualitative.Plotly + px.colors.qualitative.Pastel + px.colors.qualitative.Set1
     colores_personalizados = colores_personalizados[:30]
 
-    fig_all = px.line(data_frame = df_bal,
+    fig_all = px.line(data_frame = filtered_data,
             x = 'Fecha actualización',
             y = 'Valores',
             color = 'nombre',
@@ -54,7 +45,7 @@ def main(selected_time):
                 use_container_width = True)
 
 
-    fig_reno = px.line(data_frame = df_bal[df_bal['tipo de energía'] == 'Renovable'],
+    fig_reno = px.line(data_frame = filtered_data[filtered_data['tipo de energía'] == 'Renovable'],
         x = 'Fecha actualización',
         y = 'Valores',
         color = 'nombre',
@@ -64,7 +55,7 @@ def main(selected_time):
     st.plotly_chart(figure_or_data = fig_reno,
                 use_container_width = True)
 
-    fig_no_reno=px.line(data_frame = df_bal[df_bal['tipo de energía'] == 'No-Renovable'],
+    fig_no_reno=px.line(data_frame = filtered_data[filtered_data['tipo de energía'] == 'No-Renovable'],
         x = 'Fecha actualización',
         y = 'Valores',
         color = 'nombre',
@@ -75,7 +66,7 @@ def main(selected_time):
                 use_container_width = True)
 
 
-    fig_dbc = px.line(data_frame = df_bal[df_bal['tipo de energía'] == 'Demanda en b.c.'],
+    fig_dbc = px.line(data_frame = filtered_data[filtered_data['tipo de energía'] == 'Demanda en b.c.'],
         x = 'Fecha actualización',
         y = 'Valores',
         color = 'nombre',
@@ -87,7 +78,7 @@ def main(selected_time):
                 use_container_width = True)
 
 
-    fig_box2 = px.box(data_frame=df_bal,
+    fig_box2 = px.box(data_frame=filtered_data,
        x = 'Valores',
        y = 'tipo de energía',
        color = 'tipo de energía',

@@ -39,9 +39,8 @@ def main(selected_time):
 
     filtered_intercambio_data = intercambio_data[intercambio_data['datetime'] >= fecha_limite]
 
-    st.dataframe(filtered_intercambio_data)
 
-    fig = px.line(intercambio_data, x = 'Fecha actualización', y = 'Valores', color= 'nombre',
+    fig = px.line(filtered_intercambio_data, x = 'Fecha actualización', y = 'Valores', color= 'nombre',
               line_group='tipo de intercambio',
               title= 'Evolucion de los valores de intercambio por País y Tipo',
               line_dash='tipo de intercambio',
@@ -49,28 +48,28 @@ def main(selected_time):
     
     st.plotly_chart(fig,use_container_width= True)
 
-    fig_francia = px.line(intercambio_data[intercambio_data['nombre'] == 'Francia'], x = 'Fecha actualización', y = 'Valores', color= 'tipo de intercambio',
+    fig_francia = px.line(filtered_intercambio_data[filtered_intercambio_data['nombre'] == 'Francia'], x = 'Fecha actualización', y = 'Valores', color= 'tipo de intercambio',
               line_group='tipo de intercambio',
               title= 'Evolucion de los valores de intercambio Francia',
               line_dash='tipo de intercambio',
               markers= True)
     st.plotly_chart(fig_francia,use_container_width= True)
 
-    fig_portugal = px.line(intercambio_data[intercambio_data['nombre'] == 'Portugal'], x = 'Fecha actualización', y = 'Valores', color= 'tipo de intercambio',
+    fig_portugal = px.line(filtered_intercambio_data[filtered_intercambio_data['nombre'] == 'Portugal'], x = 'Fecha actualización', y = 'Valores', color= 'tipo de intercambio',
               line_group='tipo de intercambio',
               title= 'Evolucion de los valores de intercambio por Portugal',
               line_dash= 'tipo de intercambio',
               markers= True)
     st.plotly_chart(fig_portugal,use_container_width=True)
 
-    fig_marruecos = px.line(intercambio_data[intercambio_data['nombre'] == 'Marruecos'], x = 'Fecha actualización', y = 'Valores', color= 'tipo de intercambio',
+    fig_marruecos = px.line(filtered_intercambio_data[filtered_intercambio_data['nombre'] == 'Marruecos'], x = 'Fecha actualización', y = 'Valores', color= 'tipo de intercambio',
               line_group='tipo de intercambio',
               title= 'Evolucion de los valores de intercambio por Marruecos',
               line_dash= 'tipo de intercambio',
               markers= True)
     st.plotly_chart(fig_marruecos,use_container_width=True)
 
-    fig_andorra = px.line(intercambio_data[intercambio_data['nombre'] == 'Andorra'],
+    fig_andorra = px.line(filtered_intercambio_data[filtered_intercambio_data['nombre'] == 'Andorra'],
               x='Fecha actualización', y='Valores', color='tipo de intercambio',
               line_group='tipo de intercambio',
               title='Evolución de los valores de intercambio por Andorra',
@@ -79,14 +78,14 @@ def main(selected_time):
     st.plotly_chart(fig_andorra,use_container_width=True)
 
 
-    fig1 = px.bar(intercambio_data, x = 'nombre', y = 'Valores', color = 'tipo de intercambio',
+    fig1 = px.bar(filtered_intercambio_data, x = 'nombre', y = 'Valores', color = 'tipo de intercambio',
              title= 'Valor del intercambio por País y Tipo',
              labels= {'Valores' : 'Valor de intercambio', 'nombre' : 'nombre'},
              barmode= 'group')
     
     st.plotly_chart(fig1,use_container_width= True)
 
-    fig2 = px.scatter(intercambio_data, x = 'Valores', y = 'Porcentaje', color = 'nombre',
+    fig2 = px.scatter(filtered_intercambio_data, x = 'Valores', y = 'Porcentaje', color = 'nombre',
                  size= 'Porcentaje', hover_name= 'tipo de intercambio',
                  title = 'Relación entre el valor del intercambio y el porcentaje de cambio',
                  size_max= 10)
