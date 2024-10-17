@@ -5,7 +5,7 @@ from datetime import datetime, timedelta
 
 def get_demanda_data(selected_time):
     script_dir = os.path.dirname(__file__)
-    data_path = os.path.join(script_dir, '..', '..', 'Notebooks', 'Obtencion datos', 'datos_demanda.csv')
+    data_path = os.path.join(script_dir, '..', '..', 'Notebooks', 'Obtencion datos', 'demanda_evolucion.csv')
 
     demanda_data = pd.read_csv(data_path)
 
