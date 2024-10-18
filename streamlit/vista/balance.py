@@ -70,8 +70,7 @@ def main(selected_time):
         x = 'Fecha actualización',
         y = 'Valores',
         color = 'nombre',
-        color_discrete_sequence = colores_personalizados
-)
+        color_discrete_sequence = colores_personalizados)
 
     fig_dbc.update_layout(title = 'Evolución de energía diaría de demanda en barra central')
     st.plotly_chart(figure_or_data = fig_dbc,
@@ -86,10 +85,6 @@ def main(selected_time):
     fig_box2.update_layout(title = 'Boxplot con outliers')
     st.plotly_chart(figure_or_data = fig_box2,
                 use_container_width = True)
-
-
-
-
 
 
 
