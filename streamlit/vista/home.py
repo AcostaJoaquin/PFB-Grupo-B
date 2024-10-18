@@ -6,10 +6,6 @@ import streamlit as st
 
 
 def inicio_app():
- 
-
-
-
 
     #Titulo
     st.markdown("<h1 style='text-align: center;color: skyblue; font-size: 3em;'>Proyecto cuadro de mando de la red eléctrica de España</h1>", unsafe_allow_html=True)
