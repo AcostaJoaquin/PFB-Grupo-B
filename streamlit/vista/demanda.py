@@ -12,13 +12,13 @@ def get_demanda_data():
     return pd.read_csv(data_path)
 
 
-def main(selected_time):
+def demanda_app(selected_time):
     st.title('Datos de la demanda eléctrica a nivel nacional')
     demanda_data = get_demanda_data()
 
     demanda_data['Fecha actualización'] = pd.to_datetime(demanda_data['Fecha actualización'], format='%d/%m/%Y').dt.tz_localize(None)
 
-    today = pd.to_datetime('today').tz_localize('UTC')
+    today = pd.to_datetime(demanda_data['Fecha actualización'].iloc[-1]).tz_localize('UTC')
     if selected_time == '7 días':
         fecha_limite = today - timedelta(days=7)
     elif selected_time == '14 días':
@@ -38,4 +38,4 @@ def main(selected_time):
     st.plotly_chart(fig_demanda,use_container_width= True)
 
 if __name__ == "__main__":
-    main()
+    demanda_app()

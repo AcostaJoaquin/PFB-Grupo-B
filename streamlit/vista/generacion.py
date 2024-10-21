@@ -12,13 +12,13 @@ def get_generacion_data():
     return pd.read_csv(data_path)
 
 
-def main(selected_time):
+def generacion_app(selected_time):
     st.title('Datos de Generación Eléctrica')
     generacion_data = get_generacion_data()
 
     generacion_data['Fecha actualización'] = pd.to_datetime(generacion_data['Fecha actualización'], format='%d/%m/%Y').dt.tz_localize(None)
 
-    today = pd.to_datetime('today').tz_localize('UTC')
+    today = pd.to_datetime(generacion_data['Fecha actualización'].iloc[-1]).tz_localize('UTC')
     if selected_time == '7 días':
         date_limit = today - timedelta(days=7)
     elif selected_time == '14 días':
@@ -63,5 +63,4 @@ def main(selected_time):
     st.plotly_chart(fig4,use_container_width=True)
 
     if __name__ == "__main__":
-        selected_time = st.selectbox("Selecciona un periodo de tiempo", ['7 días', '14 días', '30 días', 'Sin filtro'])
-        main(selected_time)
+       generacion_app()

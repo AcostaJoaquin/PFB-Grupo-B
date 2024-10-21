@@ -11,13 +11,13 @@ def get_intercambio_data():
     print(f"Data path: {data_path}")
     return pd.read_csv(data_path)
 
-def main(selected_time):
+def intercambio_app(selected_time):
     st.title('Datos de Intercambio Eléctrico')
     intercambio_data = get_intercambio_data()
 
     intercambio_data['Fecha actualización'] = pd.to_datetime(intercambio_data['Fecha actualización'], format='%d/%m/%Y').dt.tz_localize(None)
 
-    today = pd.to_datetime('today').tz_localize('UTC')
+    today = pd.to_datetime(intercambio_data['Fecha actualización'].iloc[-1]).tz_localize('UTC')
     if selected_time == '7 días':
         date_limit = today - timedelta(days=7)
     elif selected_time == '14 días':
@@ -87,5 +87,4 @@ def main(selected_time):
 
 
     if __name__ == "__main__":
-        selected_time = st.selectbox("Selecciona un periodo de tiempo", ['7 días', '14 días', '30 días', 'Sin filtro'])
-        main(selected_time)
+        intercambio_app()
