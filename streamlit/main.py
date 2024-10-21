@@ -4,7 +4,7 @@ from vista.balance import main as balance_page
 from vista.demanda import main as demanda_page
 from vista.generacion import main as generacion_page
 from vista.intercambio import main as intercambio_page
-from vista.modelo import main as modelo_page
+from vista.modelo import modelo as modelo_page
 from datetime import datetime, timedelta
 
 
