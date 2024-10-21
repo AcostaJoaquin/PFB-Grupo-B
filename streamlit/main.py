@@ -1,9 +1,9 @@
 import streamlit as st
 from vista.home import inicio_app
-from vista.balance import main as balance_page
-from vista.demanda import main as demanda_page
-from vista.generacion import main as generacion_page
-from vista.intercambio import main as intercambio_page
+from vista.balance import balance_app as balance_page
+from vista.demanda import demanda_app as demanda_page
+from vista.generacion import generacion_app as generacion_page
+from vista.intercambio import intercambio_app as intercambio_page
 from vista.modelo import main as modelo_page
 from datetime import datetime, timedelta
 
@@ -30,8 +30,7 @@ background-color: #202020;
 st.markdown(page_gb_img, unsafe_allow_html=True)
 
 def main():
-   # st.title('REData API')
-    #st.text('Datos del cuadro de mando de la red eléctrica de España')
+   
 
     # Barra lateral para la navegación
     sidebar_opciones = ['Inicio','Balance', 'Demanda', 'Generación', 'Intercambio', 'Modelo']

@@ -14,13 +14,13 @@ def get_balance_data():
     print(f"Data path: {data_path}")
     return pd.read_csv(data_path)
 
-def main(selected_time):
+def balance_app(selected_time):
     st.title('Balance de energía eléctrica')
     df_bal = get_balance_data()
 
     df_bal['Fecha actualización'] = pd.to_datetime(df_bal['Fecha actualización']).dt.tz_localize(None)
 
-    today = pd.to_datetime('today').tz_localize('UTC')
+    today = pd.to_datetime(df_bal['Fecha actualización'].iloc[-1]).tz_localize('UTC')
     if selected_time == '7 días':
         date_limit = today - timedelta(days=7)
     elif selected_time == '14 días':
@@ -89,4 +89,4 @@ def main(selected_time):
 
 
 if __name__ == "__main__":
-    main()
+    balance_app()

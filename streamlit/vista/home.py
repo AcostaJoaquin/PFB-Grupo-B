@@ -1,8 +1,12 @@
 import pandas as pd
 import numpy as np
 import streamlit as st
+import plotly.express as px
+from .demanda import demanda_app
+from datetime import datetime, timedelta
 
 
+selected_time = '7 días'
 
 
 def inicio_app():
@@ -27,9 +31,11 @@ def inicio_app():
     with tabs1:
         st.header("Gráficas interactivas")
             #Descripción:
-        st.markdown( 'Visualizamos los datos de balance de energía, la demanda, la generación y los intercambios de energía.',
+        st.markdown( 'Visualizamos los datos de balance de energía, la demanda, la generación y los intercambios de energía.<br><br>'
+                    'Para una exploración más detallada y personalizada, le invitamos a visitar la sección de gráficas interactivas. Allí podrá filtrar los datos por fecha, tipo de energía, y analizar tendencias, patrones y relaciones entre los diferentes componentes del sistema.<br><br>'
+                    'Aquí tienes un adelanto:',
                         unsafe_allow_html=True)
-        
+        demanda_app(selected_time)
     with tabs2:
         st.header(" Mapa Interactivo")
         #Descripción:
