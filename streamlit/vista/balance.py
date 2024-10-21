@@ -18,6 +18,20 @@ def balance_app(selected_time):
     st.title('Balance de energía eléctrica')
     df_bal = get_balance_data()
 
+
+
+    st.markdown(body = """En esta sección se muestra el informe diario de balance. """)
+
+    st.markdown(body = """El balance energético diario es el detalle de producción y consumo energético en los sistemas penilsulares
+                          y no penilsulares de la red eléctrica española, así como de Ceuta y Melilla.""")
+
+    st.markdown(body = """Incluidos en este apartado, encontramos datos y gráficas que nos muestran la estructura necesaria para la
+                        cobertura de la demanda energética. Ésta misma se encuentra distribuida en diferentes tipos de energías
+                        renovables y no renovables. """,
+                          unsafe_allow_html=True)
+
+
+
     df_bal['Fecha actualización'] = pd.to_datetime(df_bal['Fecha actualización']).dt.tz_localize(None)
 
     today = pd.to_datetime(df_bal['Fecha actualización'].iloc[-1]).tz_localize('UTC')
