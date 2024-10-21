@@ -1,10 +1,12 @@
 import streamlit as st
 from vista.home import inicio_app
+
 from vista.balance import balance_app as balance_page
 from vista.demanda import demanda_app as demanda_page
 from vista.generacion import generacion_app as generacion_page
 from vista.intercambio import intercambio_app as intercambio_page
-from vista.modelo import main as modelo_page
+from vista.modelo import modelo as modelo_page
+
 from datetime import datetime, timedelta
 
 
