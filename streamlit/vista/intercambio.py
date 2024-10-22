@@ -99,26 +99,19 @@ def intercambio_app(selected_time):
     portugal_icon = folium.CustomIcon(portugal_url, icon_size=(40, 20))
 
 
-    df_banderas = pd.DataFrame()
-    df_banderas['nombre'] = lista_paises
-    df_banderas['bandera'] = [marruecos_icon, francia_icon, portugal_icon, andorra_icon, españa_icon]
-
-    df_total = pd.merge(df_unido, df_banderas , how = 'left', on = 'nombre')
-
     ## df_filtrado es el df resultante del tipo de intercambio deseado.
-    df_filtrado = df_total[df_total['tipo de intercambio'] == selected_option]
+    df_filtrado = df_unido[df_unido['tipo de intercambio'] == selected_option]
 
     #CREACIÓN DEL MAPA CON INFORMACIÓN
     intercambios = folium.map.FeatureGroup(name='Intercambios')
 
 
-    for lat, lng, pais, valores, porcentaje, fecha, bandera in zip(df_filtrado['altitud'],
+    for lat, lng, pais, valores, porcentaje, fecha in zip(df_filtrado['altitud'],
                            df_filtrado['latitud'],
                            df_filtrado['nombre'],
                            df_filtrado['Valores'],
                            df_filtrado['Porcentaje'],
-                           df_filtrado['Fecha actualización'],
-                           df_filtrado['bandera']):
+                           df_filtrado['Fecha actualización']):
 
             contenido_label = f'''<b> Pais: {pais} </b><br>
                             <b>Tipo de intercambio: {selected_option} </b><br>
@@ -126,7 +119,6 @@ def intercambio_app(selected_time):
                             <b>Porcentaje: {porcentaje} </b><br>
                             <b>Fecha actualización: {fecha} </b>'''
             intercambios.add_child(folium.Marker(location=[lat, lng],
-                                                 icon = bandera,
                                                  popup=contenido_label))
 
 
