@@ -1,12 +1,9 @@
 import streamlit as st
+
+from vista.informacion import informacion_app
 from vista.home import inicio_app
-
-from vista.balance import balance_app as balance_page
-from vista.demanda import demanda_app as demanda_page
-from vista.generacion import generacion_app as generacion_page
-from vista.intercambio import intercambio_app as intercambio_page
-from vista.modelo import modelo as modelo_page
-
+from vista.graficas import graficas_app
+from vista.modelo import modelo
 from datetime import datetime, timedelta
 
 
@@ -33,28 +30,30 @@ st.markdown(page_gb_img, unsafe_allow_html=True)
 
 def main():
    
+    menu = [
+    ['Inicio','🔎'],
+    ['Gráficas Interactivas', '📊'],
+    ['Modelo de Machine Learning', '🤖'],
+    ['Información', '📘']
+    ]
+    menu_options = [item[0] for item in menu]
+    # Mostrar nombre y icono con estilo
+    selected_option = st.sidebar.selectbox(
+        '🏡MENU',
+        menu_options,
+        format_func=lambda x: f"{(menu[menu_options.index(x)][1])}{x}",  
+    )
 
-    # Barra lateral para la navegación
-    sidebar_opciones = ['Inicio','Balance', 'Demanda', 'Generación', 'Intercambio', 'Modelo']
-    selected_option = st.sidebar.selectbox('Dato a consultar', sidebar_opciones)
-
-    # Selección del periodo de tiempo
-    tiempo_opciones = ['7 días', '14 días', '30 días']
-    selected_time = st.sidebar.selectbox('Periodo de tiempo', tiempo_opciones)
-
-    # Llamar a la función de la página seleccionada y pasar el periodo de tiempo
+    # Llamar a la función de la página seleccionada
     if selected_option == 'Inicio':
         inicio_app()
-    elif selected_option == 'Balance':
-        balance_page(selected_time)
-    elif selected_option == 'Demanda':
-        demanda_page(selected_time)
-    elif selected_option == 'Generación':
-        generacion_page(selected_time)
-    elif selected_option == 'Intercambio':
-        intercambio_page(selected_time)
-    elif selected_option == 'Modelo':
-        modelo_page()
+    elif selected_option == 'Gráficas Interactivas':
+        graficas_app()
+    elif selected_option == 'Modelo de Machine Learning':
+        modelo()
+    elif selected_option == 'Información':
+        informacion_app()
+
 
 if __name__ == "__main__":
     main()
