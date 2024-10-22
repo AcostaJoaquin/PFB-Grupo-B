@@ -34,8 +34,10 @@ def intercambio_app(selected_time):
 
     filtered_data = intercambio_data[intercambio_data['Fecha actualización'] >= date_limit]
 
-    bar_opciones = ['Importación', 'Exportación', 'Saldo']
+    ##IMPUT DEL TIPO DE INFORMACIÓN DESEADA.
+    bar_opciones = ['Importación', 'Exportación', 'saldo']
     selected_option = st.selectbox('Tipo de energía', bar_opciones)
+
 
     #Creamos mapa base:
     españa_alt = 40.4637
@@ -79,6 +81,9 @@ def intercambio_app(selected_time):
     #Unión de df_coordenadas y df incluido en la función - en nuestro caso, df_intercambio.
     df_unido = pd.merge(filtered_data, df_coordenadas, how = 'left', on = 'nombre')
 
+    ## df_filtrado es el df resultante del tipo de intercambio deseado.
+    df_filtrado = df_unido[df_unido['tipo de intercambio'].str.lower() == selected_option]
+
     #Creación de iconos por país
     españa_url = "https://upload.wikimedia.org/wikipedia/en/9/9a/Flag_of_Spain.svg"
     españa_icon = folium.CustomIcon(españa_url, icon_size=(50, 30))
@@ -98,10 +103,7 @@ def intercambio_app(selected_time):
 
     #CREACIÓN DEL MAPA CON INFORMACIÓN
     intercambios = folium.map.FeatureGroup(name='Intercambios')
-    ##IMPUT DEL TIPO DE INFORMACIÓN DESEADA.
-    input_tipo_inter = input('Introduce el tipo de intercambio: importación, exportación, o saldo: ______ ').lower()
-    ## df_filtrado es el df resultante del tipo de intercambio deseado.
-    df_filtrado = df_unido[df_unido['tipo de intercambio'].str.lower() == selected_option]
+
 
     for lat, lng, pais, valores, porcentaje, fecha in zip(df_filtrado['altitud'],
                            df_filtrado['latitud'],
@@ -111,7 +113,7 @@ def intercambio_app(selected_time):
                            df_filtrado['Fecha actualización']):
 
             contenido_label = f'''<b> Pais: {pais} </b><br>filtered_datafiltered_data
-                            <b>Tipo de intercambio: {input_tipo_inter} </b><br>
+                            <b>Tipo de intercambio: {selected_option} </b><br>
                             <b>Valores: {valores} </b><br>
                             <b>Porcentaje: {porcentaje} </b><br>
                             <b>Fecha actualización: {fecha} </b>'''
