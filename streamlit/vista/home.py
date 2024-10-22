@@ -6,8 +6,8 @@ from .demanda import demanda_app
 from datetime import datetime, timedelta
 
 
-selected_time = '7 días'
-
+selected_time = '30 días'
+st.text("Hola")
 
 def inicio_app():
 
@@ -21,43 +21,35 @@ def inicio_app():
     col_1,col_2 = st.columns((1,0.2))
 
     col_1.markdown(
-        '<p class="big-font">Esta plataforma es el resultado de nuestro proyecto final del curso de <span style="font-weight: bold; color: skyblue">Data Science e Inteligencia Artificial</span> de la escuela <span style="font-weight: bold; color: skyblue">HACK A BOSS</span>.<br>  Fue desarrollado por Diego Díaz Gómez, Luis Miguel Guerrero Albalat, Joaquín Acosta y Víctor Manuel Harillo Parra.<br>'
-        'Se trata de una plataforma interactiva que ofrece un análisis detallado sobre el balance, demanda, generación e intercambio de energía.<br><br>'
+        '<p class="big-font">Esta plataforma interactiva que ofrece un análisis detallado sobre el balance, demanda, generación e intercambio de energía.<br><br>'
+        'Este es el resultado de nuestro proyecto final del curso de <span style="font-weight: bold; color: skyblue">Data Science e Inteligencia Artificial</span> de la escuela <span style="font-weight: bold; color: skyblue">HACK A BOSS</span>.<br><br> Fue desarrollado por Diego Díaz Gómez, Luis Miguel Guerrero Albalat, Joaquín Acosta y Víctor Manuel Harillo Parra.<br><br>'
         'Este proyecto refleja nuestro esfuerzo conjunto en el uso de herramientas tecnológicas avanzadas para facilitar el análisis energético.<br><br>'
         'Entre sus principales funcionalidades, incluye:<br>',
         unsafe_allow_html=True)
     ####--PESTAÑAS
-    tabs1, tabs2, tabs3, tabs4 = st.tabs(["📈:blue[Gráficas interactivas] 📉", ":blue[Mapa Interactivo]🗺️", ":blue[Modelo de Machine Learning]🤖 ", ":blue[Informacíon]📖"])
+    tabs1, tabs2, tabs3 = st.tabs(["📈:blue[Gráficas interactivas] 📉", ":blue[Modelo de Machine Learning]🤖 ", ":blue[Informacíon]📖"])
     with tabs1:
         st.header("Gráficas interactivas")
             #Descripción:
         st.markdown( 'Visualizamos los datos de balance de energía, la demanda, la generación y los intercambios de energía.<br><br>'
+                    'En el apartado de intercambio integramos un mapa dinámico que permite explorar geográficamente los datos de intercambio de energía entre las principales fronteras a España.<br><br>'
                     'Para una exploración más detallada y personalizada, le invitamos a visitar la sección de gráficas interactivas. Allí podrá filtrar los datos por fecha, tipo de energía, y analizar tendencias, patrones y relaciones entre los diferentes componentes del sistema.<br><br>'
                     'Aquí tienes un adelanto:',
                         unsafe_allow_html=True)
 
         demanda_app(selected_time)
+    
     with tabs2:
-        st.header(" Mapa Interactivo")
-        #Descripción:
-        st.markdown("Integramos un mapa dinámico que permite explorar geográficamente los datos de intercambio de energía entre las principales fronteras a España.",
-                    unsafe_allow_html=True)
-
-    with tabs3:
         st.header("Modelo de Machine Learning")
         #Descripción:
         st.markdown(' Hemos implementado un modelo de aprendizaje automático que realiza predicciones sobre el comportamiento futuro del sistema energético.',
                     unsafe_allow_html=True)
 
-    with tabs4:
+    with tabs3:
         st.header("Informacíon:")
         #Descripción:
         st.markdown('Proporciona información sobre nuestro equipo, incluyendo enlaces a nuestros perfiles de GitHub y Linkedin para mayor transparencia y contacto.',
                     unsafe_allow_html=True)
-
-
-
-
 
 if __name__ == "__inicio_app__":
     inicio_app()

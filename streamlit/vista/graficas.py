@@ -8,7 +8,7 @@ from vista.intercambio import intercambio_app as intercambio_page
 
 def graficas_app():
     #Titulo
-    st.title('Explora datos visualmente')
+    st.title('  Explora datos visualmente  ')
 
     #Barra lateral 
     sidebar_opciones = ['Balance', 'Demanda', 'Generación', 'Intercambio']

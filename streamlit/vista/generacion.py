@@ -13,7 +13,11 @@ def get_generacion_data():
 
 
 def generacion_app(selected_time):
-    st.title('Datos de Generación Eléctrica')
+     
+    st.markdown("<h1 style='text-align: center; color: skyblue; font-size: 2rem;'>Datos de Generación Eléctrica</h1>", unsafe_allow_html=True)
+    
+    
+
     generacion_data = get_generacion_data()
 
     generacion_data['Fecha actualización'] = pd.to_datetime(generacion_data['Fecha actualización'], format='%d/%m/%Y').dt.tz_localize(None)

@@ -31,27 +31,27 @@ st.markdown(page_gb_img, unsafe_allow_html=True)
 def main():
    
     menu = [
-    ['Inicio','🔎'],
-    ['Gráficas Interactivas', '📊'],
-    ['Modelo de Machine Learning', '🤖'],
-    ['Información', '📘']
+    [' Inicio','🔎'],
+    [' Gráficas Interactivas', '📊'],
+    [' Modelo de Machine Learning', '🤖'],
+    [' Información', '📘']
     ]
     menu_options = [item[0] for item in menu]
     # Mostrar nombre y icono con estilo
     selected_option = st.sidebar.selectbox(
-        '🏡MENU',
+        '🏡  MENU',
         menu_options,
-        format_func=lambda x: f"{(menu[menu_options.index(x)][1])}{x}",  
+        format_func=lambda x: f"{(menu[menu_options.index(x)][1])}{x}",
     )
 
     # Llamar a la función de la página seleccionada
-    if selected_option == 'Inicio':
+    if selected_option == ' Inicio':
         inicio_app()
-    elif selected_option == 'Gráficas Interactivas':
+    elif selected_option == ' Gráficas Interactivas':
         graficas_app()
-    elif selected_option == 'Modelo de Machine Learning':
+    elif selected_option == ' Modelo de Machine Learning':
         modelo()
-    elif selected_option == 'Información':
+    elif selected_option == ' Información':
         informacion_app()
 
 

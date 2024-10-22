@@ -13,7 +13,8 @@ def get_demanda_data():
 
 
 def demanda_app(selected_time):
-    st.title('Datos de la demanda eléctrica a nivel nacional')
+    st.markdown("<h1 style='text-align: center; color: skyblue; font-size: 2rem;'>Datos de la demanda eléctrica a nivel nacional</h1>", unsafe_allow_html=True)
+    
     demanda_data = get_demanda_data()
 
     demanda_data['Fecha actualización'] = pd.to_datetime(demanda_data['Fecha actualización'], format='%d/%m/%Y').dt.tz_localize(None)

@@ -15,7 +15,8 @@ def get_balance_data():
     return pd.read_csv(data_path)
 
 def balance_app(selected_time):
-    st.title('Balance de energía eléctrica')
+    st.markdown("<h1 style='text-align: center; color: skyblue; font-size: 2rem;'>Balance de energía eléctrica</h1>", unsafe_allow_html=True)
+    
     df_bal = get_balance_data()
 
 
