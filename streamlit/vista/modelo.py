@@ -41,7 +41,7 @@ def modelo():
                           será la demanda energética de los próximos días. Dicha herramienta se basa en un modelo
                           de Machine learning (cuyos detalles se especifican más adelante) entrenado con datos
                           extraidos de la API REData, que permite extraer datos en bruto de los movimientos de 
-                          la red eléctrica española. [Para ver más en detalle la API](https://www.ree.es/es/apidatos)""",
+                          la red eléctrica española. [Para ver más en detalle la API.](https://www.ree.es/es/apidatos)""",
                           unsafe_allow_html=True)
 
 
