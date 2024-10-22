@@ -17,7 +17,8 @@ def get_intercambio_data():
     return pd.read_csv(data_path)
 
 def intercambio_app(selected_time):
-    st.title('Datos de Intercambio Eléctrico')
+    st.markdown("<h1 style='text-align: center; color: skyblue; font-size: 2rem;'>Datos de Intercambio Eléctrico </h1>", unsafe_allow_html=True)
+
     intercambio_data = get_intercambio_data()
 
     intercambio_data['Fecha actualización'] = pd.to_datetime(intercambio_data['Fecha actualización'], format='%d/%m/%Y').dt.tz_localize(None)
@@ -35,7 +36,7 @@ def intercambio_app(selected_time):
     filtered_data = intercambio_data[intercambio_data['Fecha actualización'] >= date_limit]
 
     ##IMPUT DEL TIPO DE INFORMACIÓN DESEADA.
-    bar_opciones = ['Importación', 'Exportación', 'saldo']
+    bar_opciones = ['Importación', 'Exportación', 'Saldo']
     selected_option = st.selectbox('Tipo de energía', bar_opciones)
 
 
