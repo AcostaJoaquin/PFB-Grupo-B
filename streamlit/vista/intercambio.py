@@ -81,8 +81,6 @@ def intercambio_app(selected_time):
     #Unión de df_coordenadas y df incluido en la función - en nuestro caso, df_intercambio.
     df_unido = pd.merge(filtered_data, df_coordenadas, how = 'left', on = 'nombre')
 
-    ## df_filtrado es el df resultante del tipo de intercambio deseado.
-    df_filtrado = df_unido[df_unido['tipo de intercambio'].str.lower() == selected_option]
 
     #Creación de iconos por país
     españa_url = "https://upload.wikimedia.org/wikipedia/en/9/9a/Flag_of_Spain.svg"
@@ -101,30 +99,39 @@ def intercambio_app(selected_time):
     portugal_icon = folium.CustomIcon(portugal_url, icon_size=(40, 20))
 
 
+    df_banderas = pd.DataFrame()
+    df_banderas['nombre'] = lista_paises
+    df_banderas['bandera'] = [marruecos_icon, francia_icon, portugal_icon, andorra_icon, españa_icon]
+
+    df_total = pd.merge(df_unido, df_banderas , how = 'left', on = 'nombre')
+
+    ## df_filtrado es el df resultante del tipo de intercambio deseado.
+    df_filtrado = df_total[df_total['tipo de intercambio'] == selected_option]
+
     #CREACIÓN DEL MAPA CON INFORMACIÓN
     intercambios = folium.map.FeatureGroup(name='Intercambios')
 
 
-    for lat, lng, pais, valores, porcentaje, fecha in zip(df_filtrado['altitud'],
+    for lat, lng, pais, valores, porcentaje, fecha, bandera in zip(df_filtrado['altitud'],
                            df_filtrado['latitud'],
                            df_filtrado['nombre'],
                            df_filtrado['Valores'],
                            df_filtrado['Porcentaje'],
-                           df_filtrado['Fecha actualización']):
+                           df_filtrado['Fecha actualización'],
+                           df_filtrado['bandera']):
 
-            contenido_label = f'''<b> Pais: {pais} </b><br>filtered_datafiltered_data
+            contenido_label = f'''<b> Pais: {pais} </b><br>
                             <b>Tipo de intercambio: {selected_option} </b><br>
                             <b>Valores: {valores} </b><br>
                             <b>Porcentaje: {porcentaje} </b><br>
                             <b>Fecha actualización: {fecha} </b>'''
             intercambios.add_child(folium.Marker(location=[lat, lng],
-                                        popup=contenido_label))
+                                                 icon = bandera,
+                                                 popup=contenido_label))
 
 
 
     spain_map.add_child(intercambios)
-
-    st_folium(spain_map, width=725)
 
 
 
@@ -154,8 +161,6 @@ def intercambio_app(selected_time):
           icon=andorra_icon,
           popup = 'Andorra'
           ).add_to(spain_map)
-
-
 
 
     for i, v in df_filtrado[df_filtrado['nombre'] == 'Francia'].iterrows():
@@ -215,6 +220,8 @@ def intercambio_app(selected_time):
                 pass
 
 
+    st_folium(spain_map, width=725)
+
 
     fig = px.line(df_filtrado, x = 'Fecha actualización', y = 'Valores', color= 'nombre',
               line_group='tipo de intercambio',
@@ -224,12 +231,14 @@ def intercambio_app(selected_time):
 
     st.plotly_chart(fig,use_container_width= True)
 
+
     fig_francia = px.line(df_filtrado[df_filtrado['nombre'] == 'Francia'], x = 'Fecha actualización', y = 'Valores', color= 'tipo de intercambio',
               line_group='tipo de intercambio',
               title= 'Evolucion de los valores de intercambio Francia',
               line_dash='tipo de intercambio',
               markers= True)
     st.plotly_chart(fig_francia,use_container_width= True)
+
 
     fig_portugal = px.line(filtered_data[filtered_data['nombre'] == 'Portugal'], x = 'Fecha actualización', y = 'Valores', color= 'tipo de intercambio',
               line_group='tipo de intercambio',
@@ -238,12 +247,14 @@ def intercambio_app(selected_time):
               markers= True)
     st.plotly_chart(fig_portugal,use_container_width=True)
 
+
     fig_marruecos = px.line(df_filtrado[df_filtrado['nombre'] == 'Marruecos'], x = 'Fecha actualización', y = 'Valores', color= 'tipo de intercambio',
               line_group='tipo de intercambio',
               title= 'Evolucion de los valores de intercambio por Marruecos',
               line_dash= 'tipo de intercambio',
               markers= True)
     st.plotly_chart(fig_marruecos,use_container_width=True)
+
 
     fig_andorra = px.line(df_filtrado[df_filtrado['nombre'] == 'Andorra'],
               x='Fecha actualización', y='Valores', color='tipo de intercambio',
@@ -260,6 +271,7 @@ def intercambio_app(selected_time):
              barmode= 'group')
 
     st.plotly_chart(fig1,use_container_width= True)
+
 
     fig2 = px.scatter(df_filtrado, x = 'Valores', y = 'Porcentaje', color = 'nombre',
                  size= 'Porcentaje', hover_name= 'tipo de intercambio',
