@@ -10,7 +10,7 @@ def graficas_app():
     #Titulo
     st.title('  Explora datos visualmente  ')
 
-    #Barra lateral 
+    #Barra lateral
     sidebar_opciones = ['Balance', 'Demanda', 'Generación', 'Intercambio']
     selected_option = st.sidebar.selectbox('Datos a consultar', sidebar_opciones)
 
@@ -26,7 +26,7 @@ def graficas_app():
     #Llamar a la función de la página seleccionada
 
     if selected_option == 'Balance':
-        balance_page(selected_time)
+        balance_page(selected_time, selected_year)
     elif selected_option == 'Demanda':
         demanda_page(selected_time)
     elif selected_option == 'Generación':
