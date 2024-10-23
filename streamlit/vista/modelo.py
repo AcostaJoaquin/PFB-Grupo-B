@@ -27,8 +27,8 @@ def get_demanda_data():
 def modelo():
     
     demanda_data = get_demanda_data()
-
-    st.subheader(body = "Modelo de Machine Learning :robot_face:")
+    
+    st.markdown("<h1 style='text-align: center; color: skyblue; font-size: 2rem;'>Modelo de Machine Learning 🤖 </h1>", unsafe_allow_html=True)
 
     st.markdown(body = """En este apartado explicaremos las decisiones tomadas para construir nuestro modelo de
                           Machine Learning y veremos las predicciones realizadas por este""")

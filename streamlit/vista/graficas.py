@@ -18,6 +18,10 @@ def graficas_app():
     tiempo_opciones = ['7 días','14 días', '30 días']
     selected_time= st.sidebar.selectbox('Periodo de tiempo', tiempo_opciones)
 
+    #Selección del año
+    años = [2024, 2023, 2022]
+    selected_year= st.sidebar.selectbox("Periodo de años ", años)
+
 
     #Llamar a la función de la página seleccionada
 

@@ -7,7 +7,7 @@ from datetime import datetime, timedelta
 
 
 selected_time = '30 días'
-st.text("Hola")
+
 
 def inicio_app():
 
@@ -50,6 +50,6 @@ def inicio_app():
         #Descripción:
         st.markdown('Proporciona información sobre nuestro equipo, incluyendo enlaces a nuestros perfiles de GitHub y Linkedin para mayor transparencia y contacto.',
                     unsafe_allow_html=True)
-
+    
 if __name__ == "__inicio_app__":
     inicio_app()

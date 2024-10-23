@@ -6,6 +6,7 @@ from vista.graficas import graficas_app
 from vista.modelo import modelo
 from datetime import datetime, timedelta
 
+st.set_page_config(layout="wide")
 
 page_gb_img = """
 <style>
