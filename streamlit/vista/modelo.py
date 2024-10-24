@@ -114,7 +114,7 @@ def modelo():
         st.markdown(body = """Una vez escogida la arquitectura a utilizar se entrenó al modelo utilizando para ello 100 épocas, 
                            dando como resultado la siguiente pérdida:""")
 
-        #imagen_perdida = cv2.imread(filename = "streamlit/vista/recursos/perdida_modelo.png")
+        #imagen_perdida = cv2.imread(filename="recursos/perdida_modelo.png")
         #imagen_perdida = cv2.cvtColor(imagen_perdida, cv2.COLOR_BGR2RGB)
         #st.image(imagen_perdida)
 

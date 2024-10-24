@@ -28,11 +28,11 @@ def graficas_app():
     if selected_option == 'Balance':
         balance_page(selected_time, selected_year)
     elif selected_option == 'Demanda':
-        demanda_page(selected_time)
+        demanda_page(selected_time, selected_year)
     elif selected_option == 'Generación':
-        generacion_page(selected_time)
+        generacion_page(selected_time,selected_year)
     elif selected_option == 'Intercambio':
-        intercambio_page(selected_time)
+        intercambio_page(selected_time,selected_year)
 
 if __name__ == "__graficas_app__":
     graficas_app()
