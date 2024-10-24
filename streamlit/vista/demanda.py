@@ -14,7 +14,7 @@ def get_demanda_data():
 
 def demanda_app(selected_time, selected_year):
     st.markdown("<h1 style='text-align: center; color: skyblue; font-size: 2rem;'>Datos de la demanda eléctrica a nivel nacional</h1>", unsafe_allow_html=True)
-    
+
     demanda_data = get_demanda_data()
 
     demanda_data['Fecha actualización'] = pd.to_datetime(demanda_data['Fecha actualización'], format='%d/%m/%Y').dt.tz_localize(None)
@@ -32,10 +32,10 @@ def demanda_app(selected_time, selected_year):
     fecha_limite = fecha_limite.tz_localize(None)
 
     filtered_data = demanda_data[demanda_data['Fecha actualización'] >= fecha_limite]
-    
+
     st.markdown("<h1 style='text-align: center; color: skyblue; font-size: 1rem;'>Muestras de gráficas</h1>",
                 unsafe_allow_html=True)
-    
+
     st.markdown(body = """En esta sección se muestra el informe diario de la demanda energética.
                 El gráfico te está mostrando cómo la demanda de energía cambia a lo largo del día, con momentos en que se usa más energía (picos) y momentos en que se usa menos (valles). ¡Es como ver un día entero de consumo energético, pero en una sola imagen! """)
 

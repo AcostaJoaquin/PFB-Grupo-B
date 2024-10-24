@@ -13,10 +13,17 @@ def get_generacion_data():
 
 
 def generacion_app(selected_time, selected_year):
-     
+
     st.markdown("<h1 style='text-align: center; color: skyblue; font-size: 2rem;'>Datos de Generación Eléctrica</h1>", unsafe_allow_html=True)
-    
-    
+
+    st.markdown(body = """En esta sección se muestra el informe diario de generación eléctrica. """)
+
+    st.markdown(body = """Los datos de generación energética diaria registra la cantidad de energía eléctrica que se produce en un momento dado a través de diferentes fuentes
+                o combustibles, sean renovables, no renovables, o demandas en barra central en los sistemas penilsulares
+                          y no penilsulares de la red eléctrica española.""")
+
+    st.markdown(body = """Estos datos son fundamentales para comprender cómo se suministra la energía eléctrica a la población y a la industria, y para analizar la evolución del sistema energético. """,
+                          unsafe_allow_html=True)
 
     generacion_data = get_generacion_data()
 
@@ -38,17 +45,31 @@ def generacion_app(selected_time, selected_year):
     filtered_data = generacion_data[generacion_data['Fecha actualización'] >= date_limit]
 
 
+
+    st.markdown("<h1 style='text-align: center; color: skyblue; font-size: 1rem;'>Muestras de gráficas</h1>",
+                unsafe_allow_html=True)
+
+    st.markdown(body = """En esta sección se muestra el informe diario de la generación energética.
+                El gráfico te está mostrando cómo la generación de energía según su tipo de combustible cambia a lo largo del día, con momentos en que se usa más energía (picos) y momentos en que se usa menos (valles).""")
+
+    st.markdown(body = """En esta gráfica, podrás encontrar todos los tipos de combustible que es generado incluyendo las trazas totales de cada energía,
+                esto es, generación renovable, generación no renovable, y generación total.""")
+
+
     fig =px.line(data_frame = filtered_data, x = 'Fecha actualización', y = 'Valores', color = 'nombre',
         line_group= 'tipo de energía',
         title= 'Tipo de energía',
         markers = True)
-    
+
     for i, trace in enumerate(fig.data):
         if trace.name not in ['Solar fotovoltaica', 'Eólica', 'Turbina de vapor']:
             fig.data[i].visible = 'legendonly'
 
-
     st.plotly_chart(fig,use_container_width=True)
+
+
+    st.markdown(body = """A contiuación podemos contemplar tres histogramas dividido por tipos de energías. En estas podemos ver que las energías renovables no suelen llegar a valores altos.
+                Por otro lado, las energías no renovables pueden tener valores similares a excepción de cuando llegamos a los 180k-200k.""")
 
     fig2 = px.histogram(data_frame= filtered_data,
              x = 'Valores',
@@ -60,11 +81,16 @@ def generacion_app(selected_time, selected_year):
 
     st.plotly_chart(fig2,use_container_width=True)
 
+
+    st.markdown(body = """Para finalizar, los valores energéticos, sean que estén divididos por combustible energético como por tipo de energía, en forma de boxplot
+                nos permite ver la mediana, cuartiles y outliers. Podemos ver en el boxplot dividido por tipo de energía (última gráfica), que los valores percibidos tienen una mediana similar, pero su tercer cuartil y bigote superior son diferentes
+                siendo los valores de generación renovables más que los de no renovables.""")
+
     fig3 = px.box(data_frame = filtered_data,
        x = 'Valores',
        y = 'nombre',
        color= 'nombre')
-    
+
     for i, trace in enumerate(fig3.data):
         if trace.name not in ['Solar fotovoltaica', 'Eólica', 'Hidráulica']:
             fig3.data[i].visible = 'legendonly'
