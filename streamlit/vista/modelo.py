@@ -1,13 +1,15 @@
 import streamlit as st
 import numpy as np
 import pandas as pd
+
 import plotly.express as px
+from datetime import datetime, timedelta
 
 import pickle
 from tensorflow.keras.models import load_model
 import os
 
-import cv2
+from PIL import Image
 
 
 def get_demanda_data():
@@ -38,7 +40,8 @@ def modelo():
     with open(data_path_2, 'rb') as file:
         escalador = pickle.load(file)
 
-    st.markdown("<h1 style='text-align: center; color: skyblue; font-size: 2rem;'>Modelo de Machine Learning </h1>", unsafe_allow_html=True)
+
+    st.markdown("<h1 style='text-align: center; color: skyblue; font-size: 3rem;'>Modelo de Machine Learning </h1>", unsafe_allow_html=True)
 
     st.markdown(body = """En este apartado explicaremos las decisiones tomadas para construir nuestro modelo de
                           Machine Learning y veremos las predicciones realizadas por este""")
@@ -58,12 +61,12 @@ def modelo():
     st.markdown(body = """A continuación puedes conocer en mayor profundidad el modelo 
                           o utilizarlo para predecir la evolución de la demanda eléctrica.""")
 
-    tabs1, tabs2 = st.tabs(["📘:blue[Explicación del modelo]", "⚡:blue[Evolución de la demanda eléctrica]"])
+    tabs1, tabs2 = st.tabs(["📘:blue[Explicación técnica del modelo]", "⚡:blue[Evolución de la demanda eléctrica]"])
     with tabs1:
         
-        st.header("Explicación del modelo")
+        st.markdown("<h1 style='text-align: center; color: skyblue; font-size: 2rem;'>Explicación técnica del modelo </h1>", unsafe_allow_html=True)
 
-        st.subheader ("Obtención de datos y preparación de los mismos para su uso en el modelo")
+        st.markdown("<h1 style='text-align: left; color: skyblue; font-size: 1rem;'>Obtención de datos y preparación de los mismos para su uso en el modelo </h1>", unsafe_allow_html=True)
 
         st.markdown(body = """Los datos utilizados para entrenar el modelo han sido extraídos, 
                            como ya se ha mencionado, de la API de REData. En concreto, como las predicciones del
@@ -82,7 +85,7 @@ def modelo():
                             en ventanas de tamaño T=10 para darles el formato más adecuado de cara al entrenamiento
                             del modelo.""")
 
-        st.subheader ("Creación del modelo")
+        st.markdown("<h1 style='text-align: left; color: skyblue; font-size: 1rem;'>Creación del modelo </h1>", unsafe_allow_html=True)
 
         st.markdown(body = """Tras la realización de múltiples pruebas, en las que se cambiaron la capa
                             recurrente, el tipo de pérdida y el learning rate, finalmente la arquitectura que vimos
@@ -113,29 +116,34 @@ def modelo():
 
         st.markdown(body = """Una vez escogida la arquitectura a utilizar se entrenó al modelo utilizando para ello 100 épocas, 
                            dando como resultado la siguiente pérdida:""")
+        st.markdown(body = """ """)
 
-        #imagen_perdida = cv2.imread(filename="recursos/perdida_modelo.png")
-        #imagen_perdida = cv2.cvtColor(imagen_perdida, cv2.COLOR_BGR2RGB)
-        #st.image(imagen_perdida)
+        #st.image("../sources/perdida_modelo.png", width=450)
+        img = Image.open('../sources/perdida_modelo.png')
+        col1, col2, col3 = st.columns([1, 2, 1])
+        with col2:
+            st.image(img, use_column_width=True)
+        
 
+        st.markdown(body = """ """)
         st.markdown(body = """Viendo que los resultados obtenidos eran satisfactorios, se hizo el 1-step y el 
                             multiple step como comprobación de un caso de aplicación del modelo. Tras esto, 
                             considerando al modelo lo suficientemente bueno, se exportó para su uso en la web. """)
+        st.markdown(body = """ """)
 
-        st.markdown(body = """Predicciones 1-step""")
-        #modelo_onestep = cv2.imread(r"recursos/1-step_modelo.png")
-        #modelo_onestep = cv2.cvtColor(modelo_onestep, cv2.COLOR_BGR2RGB)
-        #st.image(modelo_onestep)
+        col_1,col_2 = st.columns((1,1))
 
-        st.markdown(body = """Predicciones multiple step""")
-        #modelo_multiple_step = cv2.imread(filename = "recursos/multiple_step_modelo.png")
-        #modelo_multiple_step = cv2.cvtColor(modelo_multiple_step, cv2.COLOR_BGR2RGB)
-        #st.image(modelo_multiple_step)
+        col_1.markdown(body = """**Predicciones 1-step**""")
+
+        col_1.image("../sources/1-step_modelo.png", width=400)
+
+        col_2.markdown(body = """**Predicciones multiple step**""")
+
+        col_2.image("../sources/multiple_step_modelo.png", width=400)
 
 
     with tabs2:
-        st.header("Evolución de la demanda eléctrica")
-
+        st.markdown("<h1 style='text-align: center; color: skyblue; font-size: 2rem;'>Evolución de la demanda eléctrica </h1>", unsafe_allow_html=True)
 
         st.markdown(body = """Aquí se mostrará la predicción de tantos días como se indique a continuación del último día 
                         de actualización de la página, o de sus equivalentes en años anteriores 
@@ -151,6 +159,12 @@ def modelo():
         n_días = st.selectbox(label  = "Di cuántos días quieres predecir",
                                 options = días) 
 
+        demanda_data['fecha_noyear'] = demanda_data['datetime'].dt.strftime('%d/%m')
+        primera_fecha = pd.to_datetime(demanda_data['fecha_noyear'].iloc[-1], format='%d/%m')
+        ultima_fecha = primera_fecha + timedelta(days=n_días)
+        lista_fechas = pd.date_range(start=primera_fecha, end=ultima_fecha, freq='D')
+        lista_fechas = pd.DataFrame(lista_fechas, columns = ["fechas"])
+        lista_fechas['fechas'] = lista_fechas['fechas'].dt.strftime('%d/%m')
 
         demanda_filtrado = demanda_data[demanda_data['datetime'].dt.year==año]
         demanda_filtrado = demanda_filtrado.drop (['Fecha actualización', 'datetime'],axis = 1)
@@ -185,8 +199,10 @@ def modelo():
         validation_predictions = pd.DataFrame(validation_predictions, columns = ["valores"])
 
         #Graficamos las predicciones    
-        fig_pred = px.line(data_frame= validation_predictions,
-                y = "valores")
+        fig_pred = px.line(
+                x = lista_fechas ["fechas"], 
+                y = validation_predictions["valores"],
+                labels = {'x': 'Fecha', 'y': 'Valores'})
         fig_pred.update_layout(title = 'Predicción de la evolución de la demanda')
         st.plotly_chart(figure_or_data = fig_pred,
                     use_container_width = True)
