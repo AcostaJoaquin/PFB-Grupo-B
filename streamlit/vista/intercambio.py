@@ -226,13 +226,43 @@ def intercambio_app(selected_time,selected_year):
                   height = 500)
 
     with col_2:
+        st.markdown(body = """ """)
+
+
         st.markdown(body = """En esta sección se muestra el último informe de intercambio energético con nuestros países vecinos.
                     El mapa te ofrece ver los datos de importación y exportación energética de otros países así como el saldo el cual es la diferencia entre la importación y exportación. En el caso de que no hubiera ninguna información,
                     no mostraría ninguna etiqueta tras la bandera de cada país.""")
 
+        st.markdown(body = """ """)
+        st.markdown(body = """ """)
+        st.markdown(body = """ """)
+        st.markdown(body = """ """)
+
         st.markdown(body = """El intercambio energético también demuestra una linea que va de España hacia afuera, lo cual significa que esta exportando energía o, en cuanto a saldo energético con el país vecino se trata, habla de una deuda energética a pagar.""")
 
+        st.markdown(body = """ """)
+        st.markdown(body = """ """)
+        st.markdown(body = """ """)
+        st.markdown(body = """ """)
+
+
         st.markdown(body = """De la misma manera, si la linea va desde el país vecino hacia adentro, significa que esta importando energía o, en cuanto a saldo energético con el país vecino se trata, habla de una deuda energética en el que el país vecino sale deudor con España.""")
+
+        st.markdown(body = """ """)
+        st.markdown(body = """ """)
+        st.markdown(body = """ """)
+        st.markdown(body = """ """)
+
+
+    st.markdown("<h1 style='text-align: center; color: skyblue; font-size: 1rem;'>Muestras de gráficas</h1>",
+                unsafe_allow_html=True)
+
+    st.markdown(body = """A continuación vemos una gráfica lineal en la que se ve el tipo de categoría energética seleccionada dividido por países.
+                    Los valores más altos representan valores energéitcos superiores, mientras que los valores más bajos representan valores energéticos inferiores. Algo que
+                    se podrá apreciar es que en algunos países los valores saltan dos o tres fechas, o incluso que paran en algúna fecha en concreto,
+                    porque no se toma o extrae energía de esos países.""")
+
+    st.markdown(body = """También ofrecemos una vista de la traza de manera individual por país debajo de la gráfica principal.""")
 
 
     fig = px.line(df_filtrado, x = 'Fecha actualización', y = 'Valores', color= 'nombre',
@@ -243,21 +273,23 @@ def intercambio_app(selected_time,selected_year):
 
     st.plotly_chart(fig,use_container_width= True)
 
+    col_3,col_4 = st.columns((1,1))
+
 
     fig_francia = px.line(df_filtrado[df_filtrado['nombre'] == 'Francia'], x = 'Fecha actualización', y = 'Valores', color= 'tipo de intercambio',
               line_group='tipo de intercambio',
               title= 'Evolucion de los valores de intercambio Francia',
               line_dash='tipo de intercambio',
               markers= True)
-    st.plotly_chart(fig_francia,use_container_width= True)
+    col_3.plotly_chart(fig_francia,use_container_width= True)
 
 
-    fig_portugal = px.line(filtered_data[filtered_data['nombre'] == 'Portugal'], x = 'Fecha actualización', y = 'Valores', color= 'tipo de intercambio',
+    fig_portugal = px.line(df_filtrado[df_filtrado['nombre'] == 'Portugal'], x = 'Fecha actualización', y = 'Valores', color= 'tipo de intercambio',
               line_group='tipo de intercambio',
               title= 'Evolucion de los valores de intercambio por Portugal',
               line_dash= 'tipo de intercambio',
               markers= True)
-    st.plotly_chart(fig_portugal,use_container_width=True)
+    col_4.plotly_chart(fig_portugal,use_container_width=True)
 
 
     fig_marruecos = px.line(df_filtrado[df_filtrado['nombre'] == 'Marruecos'], x = 'Fecha actualización', y = 'Valores', color= 'tipo de intercambio',
@@ -265,7 +297,7 @@ def intercambio_app(selected_time,selected_year):
               title= 'Evolucion de los valores de intercambio por Marruecos',
               line_dash= 'tipo de intercambio',
               markers= True)
-    st.plotly_chart(fig_marruecos,use_container_width=True)
+    col_3.plotly_chart(fig_marruecos,use_container_width=True)
 
 
     fig_andorra = px.line(df_filtrado[df_filtrado['nombre'] == 'Andorra'],
@@ -274,7 +306,12 @@ def intercambio_app(selected_time,selected_year):
               title='Evolución de los valores de intercambio por Andorra',
               markers=True,
               line_dash='tipo de intercambio')
-    st.plotly_chart(fig_andorra,use_container_width=True)
+    col_4.plotly_chart(fig_andorra,use_container_width=True)
+
+
+    st.markdown(body = """En la gráfica de barras podemos ver de una manera simple qué países exportan o importan más o menos energía entre ellos en el tiempo seleccionado.
+                Si lo que se quiere ver es el saldo de intercambio internacional (saldo), se podrá ver qué países deben a España cuando están por encíma del valor 0
+                y viceversa cuando se trata de una deuda de parte de España.""")
 
 
     fig1 = px.bar(df_filtrado, x = 'nombre', y = 'Valores', color = 'tipo de intercambio',
@@ -284,6 +321,9 @@ def intercambio_app(selected_time,selected_year):
 
     st.plotly_chart(fig1,use_container_width= True)
 
+    st.markdown(body = """Esta gráfica de dispersión (scatterplot) esta gráfica te permitiría visualizar la dinámica entre cómo cambia el valor nominal de un activo
+                y la rapidez (o lentitud) con la que varía, representada por el porcentaje de cambio. Esto te puede ayudar a identificar patrones de comportamiento del mercado,
+                tendencias futuras o momentos clave de compra/venta energética.""")
 
     fig2 = px.scatter(df_filtrado, x = 'Valores', y = 'Porcentaje', color = 'nombre',
                  size= 'Porcentaje', hover_name= 'tipo de intercambio',
