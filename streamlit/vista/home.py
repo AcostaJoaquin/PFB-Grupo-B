@@ -7,6 +7,9 @@ from datetime import datetime, timedelta
 
 
 selected_time = '30 días'
+selected_year = 2024
+
+
 
 
 def inicio_app():
@@ -37,7 +40,7 @@ def inicio_app():
                     'Aquí tienes un adelanto:',
                         unsafe_allow_html=True)
 
-        demanda_app(selected_time)
+        demanda_app(selected_time,selected_year)
     
     with tabs2:
         st.header("Modelo de Machine Learning")

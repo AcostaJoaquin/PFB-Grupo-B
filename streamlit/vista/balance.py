@@ -47,8 +47,9 @@ def balance_app(selected_time, selected_year):
 
     date_limit = date_limit.tz_localize(None)
 
+  
+    
     filtered_data = df_bal[df_bal['Fecha actualización'] >= date_limit]
-
 
 
     colores_personalizados = px.colors.qualitative.Plotly + px.colors.qualitative.Pastel + px.colors.qualitative.Set1

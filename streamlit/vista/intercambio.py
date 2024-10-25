@@ -16,12 +16,15 @@ def get_intercambio_data():
     print(f"Data path: {data_path}")
     return pd.read_csv(data_path)
 
-def intercambio_app(selected_time):
+def intercambio_app(selected_time,selected_year):
     st.markdown("<h1 style='text-align: center; color: skyblue; font-size: 2rem;'>Datos de Intercambio Eléctrico </h1>", unsafe_allow_html=True)
 
     intercambio_data = get_intercambio_data()
 
     intercambio_data['Fecha actualización'] = pd.to_datetime(intercambio_data['Fecha actualización'], format='%d/%m/%Y').dt.tz_localize(None)
+
+    intercambio_data = intercambio_data[intercambio_data['Fecha actualización'].dt.year == selected_year]
+
 
     today = pd.to_datetime(intercambio_data['Fecha actualización'].iloc[-1]).tz_localize('UTC')
     if selected_time == '7 días':
@@ -51,8 +54,8 @@ def intercambio_app(selected_time):
     spain_map = folium.Map(location = [españa_alt, españa_lat],
                        zoom_start= 5,
                        tiles = 'Esri Worldimagery',
-                       width='500px',
-                       height='500px'
+                       width='600px',
+                       height='600px'
                        )
 
     bounds =   [[51.1242, -17.0000],[20.0000, 9.6625]]
@@ -213,7 +216,23 @@ def intercambio_app(selected_time):
                 pass
 
 
-    st_folium(spain_map, width=725)
+
+
+    col_1,col_2 = st.columns((1,1))
+
+    with col_1:
+        st_folium(spain_map,
+                  width  = 500,
+                  height = 500)
+
+    with col_2:
+        st.markdown(body = """En esta sección se muestra el último informe de intercambio energético con nuestros países vecinos.
+                    El mapa te ofrece ver los datos de importación y exportación energética de otros países así como el saldo el cual es la diferencia entre la importación y exportación. En el caso de que no hubiera ninguna información,
+                    no mostraría ninguna etiqueta tras la bandera de cada país.""")
+
+        st.markdown(body = """El intercambio energético también demuestra una linea que va de España hacia afuera, lo cual significa que esta exportando energía o, en cuanto a saldo energético con el país vecino se trata, habla de una deuda energética a pagar.""")
+
+        st.markdown(body = """De la misma manera, si la linea va desde el país vecino hacia adentro, significa que esta importando energía o, en cuanto a saldo energético con el país vecino se trata, habla de una deuda energética en el que el país vecino sale deudor con España.""")
 
 
     fig = px.line(df_filtrado, x = 'Fecha actualización', y = 'Valores', color= 'nombre',
