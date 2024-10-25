@@ -20,7 +20,7 @@ def informacion_app():
 
     ###################### Info creadores #########################
     width, height = 300, 300
-    col, columna_diego, columna_luis, columna_joaquin, columna_victorm = st.columns(5)
+    col, columna_diego, columna_luis, columna_joaquin, columna_victorm = st.columns((0.15,1,1,1,1))
 
     with columna_diego:
         st.header(":blue[Diego Díaz Gómez]")
@@ -40,10 +40,10 @@ def informacion_app():
     #### Luis #####
     with columna_luis:
         st.header(":blue[Luis Miguel Guerrero Albalat]")
-        #luis = cv2.imread(filename = "../sources/Luis.png")
-        #luis = cv2.cvtColor(luis, cv2.COLOR_BGR2RGB)
-        #luis = cv2.resize(luis, width=width, height=height)
-        #st.image(luis)
+        luis = cv2.imread(filename = "../sources/Luis.png")
+        luis = cv2.cvtColor(luis, cv2.COLOR_BGR2RGB)
+        luis = cv2.resize(luis, (width, height))
+        st.image(luis)
 
         #Links:
         linkedin, github = st.columns((1,1))
