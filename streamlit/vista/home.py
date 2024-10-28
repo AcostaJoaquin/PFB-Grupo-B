@@ -21,7 +21,7 @@ selected_year = 2024
 
 def inicio_app():
 
-    col_img, col_tit = st.columns((0.5, 1))
+    col_img, col_tit = st.columns((0.5, 1.3))
 
     #Titulo
     logo = cv2.imread(filename = "../sources/logo.png")
@@ -37,20 +37,21 @@ def inicio_app():
     col_1,col_2 = st.columns((1,0.2))
 
     col_1.markdown(
-        '<p class="big-font">Esta plataforma interactiva ofrece un análisis detallado sobre el balance, demanda, generación e intercambio de energía.<br><br>'
-        'Este es el resultado de nuestro proyecto final del curso de <span style="font-weight: bold; color: skyblue">Data Science e Inteligencia Artificial</span> de la escuela <span style="font-weight: bold; color: skyblue">HACK A BOSS</span>.<br><br> Fue desarrollado por Diego Díaz Gómez, Luis Miguel Guerrero Albalat, Joaquín Acosta y Víctor Manuel Harillo Parra.<br><br>'
-        'Este proyecto refleja nuestro esfuerzo conjunto en el uso de herramientas tecnológicas avanzadas para facilitar el análisis energético.<br><br>'
-        'Entre sus principales funcionalidades, incluye:<br>',
+        '<p class="big-font">En esta plataforma interactiva se ofrece un análisis detallado sobre el balance, la demanda, la generación y el intercambio en el mercado energético español, así como una predicción de la evolución de la demanda energética para los próximos días. Para ello, se ha obtenido información principalmente de la API de REData, que ofrece un amplio registro de los distintos movimientos que se realizan a diario en dicho mercado. Además, para la parte de la predicción, se ha entrenado un modelo de aprendizaje automático que permite, con el histórico de datos, conocer aproximadamente cuáles serán los valores de la demanda para los siguientes días.<br><br>'
+        'Este es el resultado de nuestro proyecto final del curso de <span style="font-weight: bold; color: skyblue">Data Science e Inteligencia Artificial</span> de la escuela <span style="font-weight: bold; color: skyblue">HACK A BOSS</span>. Es por ello que aquí se muestra la aplicación de diferentes conceptos y tareas relacionados con el mundo del manejo de datos y los modelos de inteligencia artificial, como puedan ser la recopilación y limpieza de datos, la creación de gráficas interactivas o el uso de los ya mencionados modelos, entre otras cosas.<br><br>'
+        'Por tanto, este proyecto refleja nuestro esfuerzo conjunto con el objetivo de generar una herrramienta útil e interesante, que además muestre nuestras habilidades y sirva para reflejar lo haprendido durante el curso.<br><br>'
+        'Fue desarrollado por Diego Díaz Gómez, Luis Miguel Guerrero Albalat, Joaquín Acosta y Víctor Manuel Harillo Parra.<br><br>'
+        'Las principales funcionalidades de la plataforma son:<br>',
         unsafe_allow_html=True)
     ####--PESTAÑAS
-    tabs1, tabs2, tabs3 = st.tabs(["📈:blue[Gráficas interactivas] 📉", ":blue[Modelo de Machine Learning]🤖 ", ":blue[Informacíon]📖"])
+    tabs1, tabs2 = st.tabs(["📈:blue[Gráficas interactivas] 📉", ":blue[Modelo de Machine Learning]🤖 "])
     with tabs1:
         st.header("Gráficas interactivas")
             #Descripción:
-        st.markdown( 'Visualizamos los datos de balance de energía, la demanda, la generación y los intercambios de energía.<br><br>'
-                    'En el apartado de intercambio integramos un mapa dinámico que permite explorar geográficamente los datos de intercambio de energía entre las principales fronteras a España.<br><br>'
-                    'Para una exploración más detallada y personalizada, le invitamos a visitar la sección de gráficas interactivas. Allí podrá filtrar los datos por fecha, tipo de energía, y analizar tendencias, patrones y relaciones entre los diferentes componentes del sistema.<br><br>'
-                    'Aquí tienes un adelanto:',
+        st.markdown( 'A través de ellas visualizamos los datos relativos al balance, la demanda, la generación y los intercambios de energía en el mercado español. Estas nos ayudarán a comprender mejor la situación actual del mismo, así como a poder comparar los diferentes componentes de cada tipo de activo energético.<br><br>'
+                    'En el subapartado "intercambio" integramos además un mapa dinámico que permite explorar geográficamente los datos de intercambio de energía entre las principales fronteras de España.<br><br>'
+                    'Para una exploración más detallada y personalizada, le invitamos a visitar la sección de gráficas interactivas. Allí podrá filtrar los datos por fecha o tipo de energía, y analizar tendencias, patrones y relaciones entre los diferentes componentes del sistema.<br><br>'
+                    'Aquí tiene un adelanto:',
                         unsafe_allow_html=True)
 
         demanda_app(selected_time,selected_year)
@@ -59,7 +60,7 @@ def inicio_app():
         st.header("Modelo de Machine Learning")
         #Descripción:
         st.markdown(body=""" Hemos implementado un modelo de aprendizaje automático que realiza predicciones sobre el comportamiento futuro de la demanda en el sistema energético español.
-                         En esta sección solo se puede visualizar una muestra de los resultados obtenidos con el modelo, pero en su pestaña correspondiente se puede ver lo que ofrece con mayor detalle, así como una explicación técnica del propio modelo.""",
+                         En esta pestaña se puede visualizar una muestra de los resultados obtenidos con el modelo, y en su sección correspondiente se puede ver lo que ofrece con mayor detalle, así como una explicación técnica del propio modelo.""",
                     unsafe_allow_html=True)
         
         demanda_data = get_demanda_data()
@@ -123,12 +124,6 @@ def inicio_app():
         st.plotly_chart(figure_or_data = fig_hist,
                     use_container_width = True)
 
-
-    with tabs3:
-        st.header("Informacíon:")
-        #Descripción:
-        st.markdown('Proporciona información sobre nuestro equipo, incluyendo enlaces a nuestros perfiles de GitHub y Linkedin para mayor transparencia y contacto.',
-                    unsafe_allow_html=True)
 
 if __name__ == "__inicio_app__":
     inicio_app()
