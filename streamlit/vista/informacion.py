@@ -7,10 +7,12 @@ import cv2
 
 
 def informacion_app():
-    
 
+    col_img, col_tit = st.columns((0.5, 1))
     ##### Información de ######
-    st.markdown("<h2 style='text-align: center; color: skyblue; font-size: 2rem;'>Más detalles sobre los creadores </h2>", unsafe_allow_html=True)
+    col_img.image("../sources/logo.png")
+    col_tit.markdown("<h2 style='text-align: center; color: skyblue; font-size: 2rem;'>Más detalles sobre los creadores </h2>", unsafe_allow_html=True)
+
     st.image("../sources/Banner_4.png")
 
     st.markdown(
@@ -20,14 +22,14 @@ def informacion_app():
 
     ###################### Info creadores #########################
     width, height = 300, 300
-    col, columna_diego, columna_luis, columna_joaquin, columna_victorm = st.columns((0.15,1,1,1,1))
+    col, columna_diego, columna_luis, columna_victorm, columna_joaquin = st.columns((0.15,1,1,1,1))
 
     with columna_diego:
         st.header(":blue[Diego Díaz Gómez]")
-        #diego = cv2.imread(filename = "../sources/Diego.png")
-        #diego = cv2.cvtColor(diego, cv2.COLOR_BGR2RGB)
-        #diego = cv2.resize(diego, width=width, height=height)
-        #st.image(diego)
+        diego = cv2.imread(filename = "../sources/Diego.png")
+        diego = cv2.cvtColor(diego, cv2.COLOR_BGR2RGB)
+        diego = cv2.resize(diego, (width, height))
+        st.image(diego)
 
         # Links:
         linkedin, github = st.columns((1,1))
@@ -39,7 +41,7 @@ def informacion_app():
     #############################################
     #### Luis #####
     with columna_luis:
-        st.header(":blue[Luis Miguel Guerrero Albalat]")
+        st.header(":blue[Luis M. Guerrero]")
         luis = cv2.imread(filename = "../sources/Luis.png")
         luis = cv2.cvtColor(luis, cv2.COLOR_BGR2RGB)
         luis = cv2.resize(luis, (width, height))
@@ -51,13 +53,28 @@ def informacion_app():
         linkedin.link_button("Linkedin", "https://www.linkedin.com/in/luismguerrero/")
         github.link_button("Github", "https://github.com/LouieGGG")
 
+#########
+    ### Víctor Manuel ###
+    with columna_victorm:
+        st.header(":blue[Victor M. Harillo]")
+        victorm = cv2.imread(filename = "../sources/Victor.png")
+        victorm = cv2.cvtColor(victorm, cv2.COLOR_BGR2RGB)
+        victorm = cv2.resize(victorm, (width, height))
+        st.image(victorm)
+
+        #Links:
+        linkedin, github = st.columns((1,1))
+
+        linkedin.link_button("Linkedin", "https://www.linkedin.com/in/victormanuelharilloparra")
+        github.link_button("Github", "https://github.com/HarilloP")
+
     ###############################
     ### Joaquin ############
     with columna_joaquin:
         st.header(":blue[Joaquín Acosta]")
         #joaquin = cv2.imread(filename = "../sources/Joaquin.png")
         #joaquin = cv2.cvtColor(joaquin, cv2.COLOR_BGR2RGB)
-        #joaquin = cv2.resize(joaquin, width=width, height=height)
+        #joaquin = cv2.resize(joaquin, (width, height))
         #st.image(joaquin)
 
         #Links:
@@ -66,20 +83,7 @@ def informacion_app():
         #linkedin.link_button("Linkedin", )
         github.link_button("Github", "https://github.com/AcostaJoaquin" )
 
-    #########
-    ### Víctor Manuel ###
-    with columna_victorm:
-        st.header(":blue[Víctor Manuel Harillo Parra]")
-        #victorm = cv2.imread(filename = "../sources/Victor.png")
-        #victorm = cv2.cvtColor(victorm, cv2.COLOR_BGR2RGB)
-        #victorm = cv2.resize(victorm, width=width, height=height)
-        #st.image(victorm)
 
-        #Links:
-        linkedin, github = st.columns((1,1))
-
-        linkedin.link_button("Linkedin", "https://www.linkedin.com/in/victormanuelharilloparra")
-        github.link_button("Github", "https://github.com/HarilloP")
 
 
 

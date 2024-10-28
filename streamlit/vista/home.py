@@ -4,6 +4,7 @@ import streamlit as st
 import plotly.express as px
 from .demanda import demanda_app
 from datetime import datetime, timedelta
+import cv2
 
 
 selected_time = '30 días'
@@ -14,8 +15,14 @@ selected_year = 2024
 
 def inicio_app():
 
+    col_img, col_tit = st.columns((0.5, 1))
+
     #Titulo
-    st.markdown("<h1 style='text-align: center; color: skyblue; font-size: 3em;'>Proyecto cuadro de mando de la red eléctrica de España</h1>", unsafe_allow_html=True)
+    logo = cv2.imread(filename = "../sources/logo.png")
+    logo = cv2.cvtColor(logo, cv2.COLOR_BGR2RGB)
+    logo = cv2.resize(logo, (200, 200))
+    col_img.image(logo)
+    col_tit.markdown("<h1 style='text-align: center; color: skyblue; font-size: 3em;'>Proyecto cuadro de mando de la red eléctrica de España</h1>", unsafe_allow_html=True)
 
     st.image("../sources/Banner_4.png")
 
@@ -41,7 +48,7 @@ def inicio_app():
                         unsafe_allow_html=True)
 
         demanda_app(selected_time,selected_year)
-    
+
     with tabs2:
         st.header("Modelo de Machine Learning")
         #Descripción:
@@ -53,6 +60,6 @@ def inicio_app():
         #Descripción:
         st.markdown('Proporciona información sobre nuestro equipo, incluyendo enlaces a nuestros perfiles de GitHub y Linkedin para mayor transparencia y contacto.',
                     unsafe_allow_html=True)
-    
+
 if __name__ == "__inicio_app__":
     inicio_app()
