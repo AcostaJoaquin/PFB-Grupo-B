@@ -41,7 +41,7 @@ def inicio_app():
         'Este es el resultado de nuestro proyecto final del curso de <span style="font-weight: bold; color: skyblue">Data Science e Inteligencia Artificial</span> de la escuela <span style="font-weight: bold; color: skyblue">HACK A BOSS</span>. Es por ello que aquí se muestra la aplicación de diferentes conceptos y tareas relacionados con el mundo del manejo de datos y los modelos de inteligencia artificial, como puedan ser la recopilación y limpieza de datos, la creación de gráficas interactivas o el uso de los ya mencionados modelos, entre otras cosas.<br><br>'
         'Por tanto, este proyecto refleja nuestro esfuerzo conjunto con el objetivo de generar una herrramienta útil e interesante, que además muestre nuestras habilidades y sirva para reflejar lo haprendido durante el curso.<br><br>'
         'Fue desarrollado por Diego Díaz Gómez, Luis Miguel Guerrero Albalat, Joaquín Acosta y Víctor Manuel Harillo Parra.<br><br>'
-        'Las principales funcionalidades de la plataforma son:<br>',
+        'Las principales funcionalidades de la plataforma son: <br>',
         unsafe_allow_html=True)
     ####--PESTAÑAS
     tabs1, tabs2 = st.tabs(["📈:blue[Gráficas interactivas] 📉", ":blue[Modelo de Machine Learning]🤖 "])
