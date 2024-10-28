@@ -3,7 +3,7 @@ import numpy as np
 import pandas as pd
 
 import plotly.express as px
-from datetime import datetime, timedelta
+from datetime import datetime, date, timedelta
 
 import pickle
 from tensorflow.keras.models import load_model
@@ -148,6 +148,8 @@ def modelo():
         st.markdown(body = """Aquí se mostrará la predicción de tantos días como se indique a continuación del último día 
                         de actualización de la página, o de sus equivalentes en años anteriores 
                         si se ha seleccionado otro año.""")
+        st.markdown(body = """En la segunda gráfica se mostrará esa misma predicción, 
+                           pero integrada en la evolución de la demanda hasta ese momento""")
         st.markdown(body = """Tarda unos segundo en cargar, y si se cambian los parámetros 
                               hay que volver a esperar unos segundos.""")
 
@@ -159,17 +161,23 @@ def modelo():
         n_días = st.selectbox(label  = "Di cuántos días quieres predecir",
                                 options = días) 
 
-        demanda_data['fecha_noyear'] = demanda_data['datetime'].dt.strftime('%d/%m')
-        primera_fecha = pd.to_datetime(demanda_data['fecha_noyear'].iloc[-1], format='%d/%m')
+
+        #demanda_fechas = demanda_data[demanda_data['datetime'].dt.year==año]
+        primera_fecha = pd.to_datetime(demanda_data['datetime'].iloc[-1], format='%d/%m/%Y').replace(year=año)
         ultima_fecha = primera_fecha + timedelta(days=n_días)
         lista_fechas = pd.date_range(start=primera_fecha, end=ultima_fecha, freq='D')
+        lista_fechas = lista_fechas [1:]
         lista_fechas = pd.DataFrame(lista_fechas, columns = ["fechas"])
-        lista_fechas['fechas'] = lista_fechas['fechas'].dt.strftime('%d/%m')
+        #lista_fechas['fechas'] = lista_fechas['fechas'].dt.strftime('%d/%m')
 
         demanda_filtrado = demanda_data[demanda_data['datetime'].dt.year==año]
-        demanda_filtrado = demanda_filtrado.drop (['Fecha actualización', 'datetime'],axis = 1)
+        demanda_filtrado = demanda_filtrado.reset_index()
+        indice = demanda_filtrado[demanda_filtrado['datetime'] == primera_fecha].index
+        valor_indice = indice[0]
+        #demanda_filtrado = demanda_filtrado[demanda_filtrado['Energia_consumida'][:valor_indice]]
+        #demanda_filtrado = demanda_filtrado.drop (['Fecha actualización', 'datetime'],axis = 1)
 
-        X = pd.DataFrame(demanda_filtrado["Energia_consumida"])
+        X = pd.DataFrame(demanda_filtrado["Energia_consumida"][:valor_indice])
         X = escalador.transform(X)
 
         # "Multiple - Step Predictions"
@@ -181,7 +189,7 @@ def modelo():
 
         last_x = X
 
-        while len(validation_predictions) <= n_días:
+        while len(validation_predictions) < n_días:
             
             # En la primera iteración predice el siguiente valor usando X
             # En las siguientes iteraciones usa el valor predicho anterior para predecir el siguiente
@@ -208,17 +216,25 @@ def modelo():
                     use_container_width = True)
 
 
+        #Graficamos las predicciones integradas en el histórico
+        demanda_grafica = demanda_data[demanda_data['datetime'].dt.year==año]
+        demanda_grafica = demanda_grafica.reset_index()
+        indice_grafica = demanda_grafica[demanda_grafica['datetime'] == primera_fecha].index
+        valor_indice_grafica = indice_grafica[0]+1
+        demanda_grafica = demanda_grafica.iloc[:valor_indice_grafica]
 
-
-
-
-
-
-
-
-
-
-
+        fig_hist = px.line(demanda_grafica,
+                x = "datetime", 
+                y = "Energia_consumida",
+                labels = {'x': 'Fecha', 'y': 'Valores'}
+                )
+        fig_hist.add_scatter(
+                x = lista_fechas ["fechas"], 
+                y = validation_predictions["valores"],
+                name = "Predicción")
+        fig_hist.update_layout(title = 'Predicción integrada en el recorrido previo')
+        st.plotly_chart(figure_or_data = fig_hist,
+                    use_container_width = True)
 
 
 
