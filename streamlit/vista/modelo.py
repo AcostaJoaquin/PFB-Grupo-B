@@ -44,7 +44,7 @@ def modelo():
     st.markdown("<h1 style='text-align: center; color: skyblue; font-size: 3rem;'>Modelo de Machine Learning </h1>", unsafe_allow_html=True)
 
     st.markdown(body = """En este apartado explicaremos las decisiones tomadas para construir nuestro modelo de
-                          Machine Learning y veremos las predicciones realizadas por este""")
+                          Machine Learning y veremos las predicciones realizadas por este.""")
     
     st.markdown(body = """Vistas las operaciones que componen el flujo principal de actividades de la red eléctrica 
                           española, la que suscita mayor interés a la hora de intentar predecir su evolución es la 
