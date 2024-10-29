@@ -17,10 +17,10 @@ def demanda_app(selected_time, selected_year):
     demanda_data = get_demanda_data()
 
     demanda_data['Fecha actualización'] = pd.to_datetime(demanda_data['Fecha actualización'], format='%d/%m/%Y').dt.tz_localize(None)
-
+    
+    today = pd.to_datetime(demanda_data['Fecha actualización'].iloc[-1]).replace(year=selected_year)
     demanda_data = demanda_data[demanda_data['Fecha actualización'].dt.year == selected_year]
 
-    today = pd.to_datetime(demanda_data['Fecha actualización'].iloc[-1]).tz_localize('UTC')
     if selected_time == '7 días':
         fecha_limite = today - timedelta(days=7)
     elif selected_time == '14 días':
@@ -28,9 +28,11 @@ def demanda_app(selected_time, selected_year):
     elif selected_time == '30 días':
         fecha_limite = today - timedelta(days=30)
 
-    fecha_limite = fecha_limite.tz_localize(None)
+    
 
-    filtered_data = demanda_data[demanda_data['Fecha actualización'] >= fecha_limite]
+    #fecha_limite = fecha_limite.tz_localize(None)
+
+    filtered_data = demanda_data[(demanda_data['Fecha actualización'] >= fecha_limite) & (demanda_data['Fecha actualización'] <= today)]
 
     st.markdown("<h1 style='color: skyblue; font-size: 1.3rem;'>Muestras de gráficas</h1>", unsafe_allow_html=True)
 

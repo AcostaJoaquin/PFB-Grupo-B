@@ -1,5 +1,6 @@
 import streamlit as st
 import pandas as pd
+import numpy as np
 import os
 from datetime import timedelta
 import plotly.express as px
@@ -19,10 +20,11 @@ def balance_app(selected_time, selected_year):
     st.markdown("<p style='font-size: 1.2em;'>El balance energético diario es el detalle de producción y consumo energético en los sistemas penilsulares y no penilsulares de la red eléctrica española, así como de Ceuta y Melilla.</p>", unsafe_allow_html=True)
     st.markdown("<p style='font-size: 1.2em;'>Incluidos en este apartado, encontramos datos y gráficas que nos muestran la estructura necesaria para la cobertura de la demanda energética. Ésta misma se encuentra distribuida en diferentes tipos de energías renovables y no renovables.</p>", unsafe_allow_html=True)
 
-    df_bal['Fecha actualización'] = pd.to_datetime(df_bal['Fecha actualización']).dt.tz_localize(None)
+    df_bal['Fecha actualización'] = pd.to_datetime(df_bal['Fecha actualización'])
+
+    today = pd.to_datetime(df_bal['Fecha actualización'].iloc[-1], format='%d/%m/%Y').replace(year=selected_year)
     df_bal = df_bal[df_bal['Fecha actualización'].dt.year == selected_year]
 
-    today = pd.to_datetime(df_bal['Fecha actualización'].iloc[-1]).tz_localize('UTC')
     if selected_time == '7 días':
         date_limit = today - timedelta(days=7)
     elif selected_time == '14 días':
@@ -30,8 +32,9 @@ def balance_app(selected_time, selected_year):
     elif selected_time == '30 días':
         date_limit = today - timedelta(days=30)
 
-    date_limit = date_limit.tz_localize(None)
-    filtered_data = df_bal[df_bal['Fecha actualización'] >= date_limit]
+    #date_limit = date_limit.tz_localize(None)
+    
+    filtered_data = df_bal[(df_bal['Fecha actualización'] >= date_limit) & (df_bal['Fecha actualización'] <= today)]
 
     colores_personalizados = px.colors.qualitative.Plotly + px.colors.qualitative.Pastel + px.colors.qualitative.Set1
     colores_personalizados = colores_personalizados[:30]
