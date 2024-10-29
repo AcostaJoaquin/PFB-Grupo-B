@@ -32,7 +32,7 @@ def informacion_app():
     col, columna_diego, columna_luis, columna_victorm, columna_joaquin = st.columns((0.15,1,1,1,1))
 
     with columna_diego:
-        st.header(":blue[Diego Díaz Gómez]")
+        st.header(":blue[Diego Díaz]")
         diego = cv2.imread(filename = "../sources/Diego.png")
         diego = cv2.cvtColor(diego, cv2.COLOR_BGR2RGB)
         diego = cv2.resize(diego, (width, height))
@@ -79,15 +79,16 @@ def informacion_app():
     ### Joaquin ############
     with columna_joaquin:
         st.header(":blue[Joaquín Acosta]")
-        #joaquin = cv2.imread(filename = "../sources/Joaquin.png")
-        #joaquin = cv2.cvtColor(joaquin, cv2.COLOR_BGR2RGB)
-        #joaquin = cv2.resize(joaquin, (width, height))
-        #st.image(joaquin)
+        joaquin = cv2.imread(filename = "../sources/joaquin.png")
+        joaquin = cv2.cvtColor(joaquin, cv2.COLOR_BGR2RGB)
+        joaquin = cv2.resize(joaquin, (width, height))
+        st.image(joaquin)
 
         #Links:
         linkedin, github = st.columns((1,1))
 
         #linkedin.link_button("Linkedin", )
+        linkedin.link_button("Linkedin", "https://www.linkedin.com/in/joaquinacde?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app")
         github.link_button("Github", "https://github.com/AcostaJoaquin" )
 
 
