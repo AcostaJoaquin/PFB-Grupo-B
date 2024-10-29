@@ -28,7 +28,8 @@ def demanda_app(selected_time, selected_year):
         fecha_limite = today - timedelta(days=14)
     elif selected_time == '30 días':
         fecha_limite = today - timedelta(days=30)
-        
+
+    
 
     #fecha_limite = fecha_limite.tz_localize(None)
 
