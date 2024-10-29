@@ -43,7 +43,7 @@ Para una exploración más detallada y personalizada, le invitamos a visitar la 
 
 -<u>_Modelo de Machine Learning_</u>:<br> Hemos implementado un modelo de aprendizaje automático que realiza predicciones sobre el comportamiento futuro de la demanda en el sistema energético español. En esta pestaña se puede visualizar una muestra de los resultados obtenidos con el modelo, y en su sección correspondiente se puede ver lo que ofrece con mayor detalle, así como una explicación técnica del propio modelo.
 
-# 1.1 EXPLICACIÓN DE CADA PÁGINA:
+# 3.1 EXPLICACIÓN DE CADA PÁGINA:
 
 <div align="center"> </div>
 
@@ -67,7 +67,7 @@ El intercambio energético también demuestra una linea que va de España hacia 
 
 De la misma manera, si la linea va desde el país vecino hacia adentro, significa que esta importando energía o, en cuanto a saldo energético con el país vecino se trata, habla de una deuda energética en el que el país vecino sale deudor con España.
 
-# 1.2 EXPLICACION DEL MODELO:
+# 3.2 EXPLICACION DEL MODELO:
 
 <div align="center"> </div>
 
