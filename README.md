@@ -10,19 +10,19 @@
 
 </div>
 1- Tecnologías usadas
-</div>
+<div></div>
 Lenguaje: Python, SQL.
 
 Librerias: numpy, pandas, plotly, folium, tensorflow, sklearn, pickle, datetime, PIL, requests, cv2, streamlit.
 
 2- INTEGRANTES
 
-</div>
+<div></div>
 Diego Díaz Gómez, Luís Miguel Guerrero Albalat, Joaquín Acosta Desalvo, Victor Manuel Harillo Parra
 
 3- INTRODUCCIÓN DEL PROYECTO
 
-</div>
+<div></div>
 
 Nuestro proyecto se trata de las Redes Electricas Españolas, presentado en una plataforma de Streamlit. En esta plataforma interactiva se ofrece un análisis detallado sobre el balance, la demanda, la generación y el intercambio energético español de los ultimos 7, 14 y 30 días, así como una predicción de la evolución de la demanda energética de futuros días, abarcando los próximos 2 a 14 días. Para ello, se ha obtenido información principalmente de la API de REData, que ofrece un amplio registro de los distintos movimientos que se realizan a diario en dicho mercado. Además, para la parte de la predicción, se ha entrenado un modelo de aprendizaje automático que permite, con el histórico de datos, conocer aproximadamente cuáles serán los valores de la demanda para los siguientes días.
 
@@ -42,7 +42,7 @@ Para una exploración más detallada y personalizada, le invitamos a visitar la 
 
 B.EXPLICACIÓN DE CADA PÁGINA:
 
-</div>
+<div></div>
 -<u>_Balance_</u>:<br> En esta sección se muestra el informe diario de balance. El balance energético diario es el detalle de producción y consumo energético en los sistemas penilsulares y no penilsulares de la red eléctrica española, así como de Ceuta y Melilla.
 
 Incluidos en este apartado, encontramos datos y gráficas que nos muestran la estructura necesaria para la cobertura de la demanda energética. Ésta misma se encuentra distribuida en diferentes tipos de energías renovables y no renovables.
@@ -65,8 +65,7 @@ De la misma manera, si la linea va desde el país vecino hacia adentro, signific
 
 C.EXPLICACION DEL MODELO:
 
-</div>
--<u>_Modelo de machine learning_</u>:<br> En este apartado explicaremos las decisiones tomadas para construir nuestro modelo de Machine Learning y veremos las predicciones realizadas por este.
+<div</div> -<u>_Modelo de machine learning_</u>:<br> En este apartado explicaremos las decisiones tomadas para construir nuestro modelo de Machine Learning y veremos las predicciones realizadas por este.
 
 Vistas las operaciones que componen el flujo principal de actividades de la red eléctrica española, la que suscita mayor interés a la hora de intentar predecir su evolución es la demanda, ya que indica cuanta electricidad se consume o se va a consumir en nuestro país.
 
@@ -74,7 +73,7 @@ Es por ello que hemos desarrollado una herramienta que ofrece una aproximación 
 
 4- CONCLUSIONES:
 
-</div>
+<div></div>
 En definitiva, este proyecto no solo refleja nuestro aprendizaje y habilidades técnicas, sino también el potencial del análisis de datos en la optimización de sectores tan cruciales como el energético, demostrando la relevancia y el impacto que la ciencia de datos y el aprendizaje automático pueden tener en áreas de gran importancia económica y social.
 
 De cara al futuro algo que podríamos mejorar o añadir sería hacer predicciones sobre el resto de categorías (balance, generación, intercambio) e incluso perfeccionar la demanda por comunidades autónomas al mostrar gráficas comparativa mensual de la demanda energética por comunidades autónomas.
