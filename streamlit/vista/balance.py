@@ -1,6 +1,6 @@
 import streamlit as st
 import pandas as pd
-
+import numpy as np
 import os
 
 from datetime import timedelta
@@ -33,11 +33,11 @@ def balance_app(selected_time, selected_year):
 
 
 
-    df_bal['Fecha actualización'] = pd.to_datetime(df_bal['Fecha actualización']).dt.tz_localize(None)
+    df_bal['Fecha actualización'] = pd.to_datetime(df_bal['Fecha actualización'])
 
+    today = pd.to_datetime(df_bal['Fecha actualización'].iloc[-1], format='%d/%m/%Y').replace(year=selected_year)
     df_bal = df_bal[df_bal['Fecha actualización'].dt.year == selected_year]
 
-    today = pd.to_datetime(df_bal['Fecha actualización'].iloc[-1]).tz_localize('UTC')
     if selected_time == '7 días':
         date_limit = today - timedelta(days=7)
     elif selected_time == '14 días':
@@ -45,11 +45,9 @@ def balance_app(selected_time, selected_year):
     elif selected_time == '30 días':
         date_limit = today - timedelta(days=30)
 
-    date_limit = date_limit.tz_localize(None)
-
-  
+    #date_limit = date_limit.tz_localize(None)
     
-    filtered_data = df_bal[df_bal['Fecha actualización'] >= date_limit]
+    filtered_data = df_bal[(df_bal['Fecha actualización'] >= date_limit) & (df_bal['Fecha actualización'] <= today)]
 
 
     colores_personalizados = px.colors.qualitative.Plotly + px.colors.qualitative.Pastel + px.colors.qualitative.Set1

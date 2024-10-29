@@ -22,11 +22,10 @@ def intercambio_app(selected_time,selected_year):
     intercambio_data = get_intercambio_data()
 
     intercambio_data['Fecha actualización'] = pd.to_datetime(intercambio_data['Fecha actualización'], format='%d/%m/%Y').dt.tz_localize(None)
-
+    
+    today = pd.to_datetime(intercambio_data['Fecha actualización'].iloc[-1]).replace(year=selected_year)
     intercambio_data = intercambio_data[intercambio_data['Fecha actualización'].dt.year == selected_year]
 
-
-    today = pd.to_datetime(intercambio_data['Fecha actualización'].iloc[-1]).tz_localize('UTC')
     if selected_time == '7 días':
         date_limit = today - timedelta(days=7)
     elif selected_time == '14 días':
@@ -36,7 +35,7 @@ def intercambio_app(selected_time,selected_year):
 
     date_limit = date_limit.tz_localize(None)
 
-    filtered_data = intercambio_data[intercambio_data['Fecha actualización'] >= date_limit]
+    filtered_data = intercambio_data[(intercambio_data['Fecha actualización'] >= date_limit) & (intercambio_data['Fecha actualización'] <= today)]
 
     ##IMPUT DEL TIPO DE INFORMACIÓN DESEADA.
     bar_opciones = ['Importación', 'Exportación', 'Saldo']
