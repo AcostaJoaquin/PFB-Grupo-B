@@ -17,7 +17,7 @@ def get_intercambio_data():
     return pd.read_csv(data_path)
 
 def intercambio_app(selected_time,selected_year):
-    st.markdown("<h1 style='text-align: center; color: skyblue; font-size: 2rem;'>Datos de Intercambio Eléctrico </h1>", unsafe_allow_html=True)
+    st.markdown("<h1 style=' color: skyblue; font-size: 2rem;'>Datos de Intercambio Eléctrico </h1>", unsafe_allow_html=True)
 
     intercambio_data = get_intercambio_data()
 
@@ -221,47 +221,35 @@ def intercambio_app(selected_time,selected_year):
 
     with col_1:
         st_folium(spain_map,
-                  width  = 500,
-                  height = 500)
+                  width  = 800,
+                  height = 400)
 
     with col_2:
-        st.markdown(body = """ """)
 
-
-        st.markdown(body = """En esta sección se muestra el último informe de intercambio energético con nuestros países vecinos.
+        st.markdown(body = """<p style='font-size: 1.2em; text-align: justify; margin: 10px 0;'>En esta sección se muestra el último informe de intercambio energético con nuestros países vecinos.
                     El mapa te ofrece ver los datos de importación y exportación energética de otros países así como el saldo el cual es la diferencia entre la importación y exportación. En el caso de que no hubiera ninguna información,
-                    no mostraría ninguna etiqueta tras la bandera de cada país.""")
-
-        st.markdown(body = """ """)
-        st.markdown(body = """ """)
-        st.markdown(body = """ """)
-        st.markdown(body = """ """)
-
-        st.markdown(body = """El intercambio energético también demuestra una linea que va de España hacia afuera, lo cual significa que esta exportando energía o, en cuanto a saldo energético con el país vecino se trata, habla de una deuda energética a pagar.""")
-
-        st.markdown(body = """ """)
-        st.markdown(body = """ """)
-        st.markdown(body = """ """)
-        st.markdown(body = """ """)
+                    no mostraría ninguna etiqueta tras la bandera de cada país.</p>""", unsafe_allow_html=True)
 
 
-        st.markdown(body = """De la misma manera, si la linea va desde el país vecino hacia adentro, significa que esta importando energía o, en cuanto a saldo energético con el país vecino se trata, habla de una deuda energética en el que el país vecino sale deudor con España.""")
-
-        st.markdown(body = """ """)
-        st.markdown(body = """ """)
-        st.markdown(body = """ """)
-        st.markdown(body = """ """)
+        st.markdown(body = """<p style='font-size: 1.2em; text-align: justify; margin: 10px 0;'>El intercambio energético también demuestra una linea que va de España hacia afuera, lo cual significa que esta exportando energía o, en cuanto a saldo energético con el país vecino se trata, habla de una deuda energética a pagar.</p>""", unsafe_allow_html=True)
 
 
-    st.markdown("<h1 style='text-align: center; color: skyblue; font-size: 1rem;'>Muestras de gráficas</h1>",
+
+        st.markdown(body = """<p style='font-size: 1.2em; text-align: justify; margin: 10px 0;'>De la misma manera, si la linea va desde el país vecino hacia adentro, significa que esta importando energía o, en cuanto a saldo energético con el país vecino se trata, habla de una deuda energética en el que el país vecino sale deudor con España.</p>""", unsafe_allow_html=True)
+
+
+
+    st.markdown("<h1 style=' color: skyblue; font-size: 1.3rem;'>Muestras de gráficas</h1>",
                 unsafe_allow_html=True)
 
-    st.markdown(body = """A continuación vemos una gráfica lineal en la que se ve el tipo de categoría energética seleccionada dividido por países.
+    st.markdown(body = """<p style='font-size: 1.2em; text-align: justify; margin: 10px 0;'>A continuación vemos una gráfica lineal en la que se ve el tipo de categoría energética seleccionada dividido por países.
                     Los valores más altos representan valores energéitcos superiores, mientras que los valores más bajos representan valores energéticos inferiores. Algo que
                     se podrá apreciar es que en algunos países los valores saltan dos o tres fechas, o incluso que paran en algúna fecha en concreto,
-                    porque no se toma o extrae energía de esos países.""")
+                    porque no se toma o extrae energía de esos países.""",
+                unsafe_allow_html=True)
 
-    st.markdown(body = """También ofrecemos una vista de la traza de manera individual por país debajo de la gráfica principal.""")
+    st.markdown(body = """<p style='font-size: 1.2em; text-align: justify; margin: 10px 0;'>También ofrecemos una vista de la traza de manera individual por país debajo de la gráfica principal.""",
+                unsafe_allow_html=True)
 
 
     fig = px.line(df_filtrado, x = 'Fecha actualización', y = 'Valores', color= 'nombre',
@@ -308,9 +296,9 @@ def intercambio_app(selected_time,selected_year):
     col_4.plotly_chart(fig_andorra,use_container_width=True)
 
 
-    st.markdown(body = """En la gráfica de barras podemos ver de una manera simple qué países exportan o importan más o menos energía entre ellos en el tiempo seleccionado.
+    st.markdown(body = """<p style='font-size: 1.2em; text-align: justify; margin: 10px 0;'>En la gráfica de barras podemos ver de una manera simple qué países exportan o importan más o menos energía entre ellos en el tiempo seleccionado.
                 Si lo que se quiere ver es el saldo de intercambio internacional (saldo), se podrá ver qué países deben a España cuando están por encíma del valor 0
-                y viceversa cuando se trata de una deuda de parte de España.""")
+                y viceversa cuando se trata de una deuda de parte de España.</p>""", unsafe_allow_html=True)
 
 
     fig1 = px.bar(df_filtrado, x = 'nombre', y = 'Valores', color = 'tipo de intercambio',
@@ -320,9 +308,9 @@ def intercambio_app(selected_time,selected_year):
 
     st.plotly_chart(fig1,use_container_width= True)
 
-    st.markdown(body = """Esta gráfica de dispersión (scatterplot) esta gráfica te permitiría visualizar la dinámica entre cómo cambia el valor nominal de un activo
+    st.markdown(body = """<p style='font-size: 1.2em; text-align: justify; margin: 10px 0;'>Esta gráfica de dispersión (scatterplot) esta gráfica te permitiría visualizar la dinámica entre cómo cambia el valor nominal de un activo
                 y la rapidez (o lentitud) con la que varía, representada por el porcentaje de cambio. Esto te puede ayudar a identificar patrones de comportamiento del mercado,
-                tendencias futuras o momentos clave de compra/venta energética.""")
+                tendencias futuras o momentos clave de compra/venta energética.""", unsafe_allow_html=True)
 
     fig2 = px.scatter(df_filtrado, x = 'Valores', y = 'Porcentaje', color = 'nombre',
                  size= 'Porcentaje', hover_name= 'tipo de intercambio',

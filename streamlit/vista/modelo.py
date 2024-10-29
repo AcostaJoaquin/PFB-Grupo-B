@@ -41,16 +41,16 @@ def modelo():
         escalador = pickle.load(file)
 
 
-    st.markdown("<h1 style='text-align: center; color: skyblue; font-size: 3rem;'>Modelo de Machine Learning </h1>", unsafe_allow_html=True)
+    st.markdown("<h1 style=' color: skyblue; font-size: 3rem;'>Modelo de Machine Learning </h1>", unsafe_allow_html=True)
 
-    st.markdown(body = """En este apartado explicaremos las decisiones tomadas para construir nuestro modelo de
-                          Machine Learning y veremos las predicciones realizadas por este.""")
+    st.markdown(body = """<p style='font-size: 1.2em; text-align: justify; margin: 10px 0;'>En este apartado explicaremos las decisiones tomadas para construir nuestro modelo de
+                          Machine Learning y veremos las predicciones realizadas por este.""", unsafe_allow_html=True)
     
-    st.markdown(body = """Vistas las operaciones que componen el flujo principal de actividades de la red eléctrica 
+    st.markdown(body = """<p style='font-size: 1.2em; text-align: justify; margin: 10px 0;'>Vistas las operaciones que componen el flujo principal de actividades de la red eléctrica 
                           española, la que suscita mayor interés a la hora de intentar predecir su evolución es la 
-                          demanda, ya que indica cuanta electricidad se consume o se va a consumir en nuestro país.""")
+                          demanda, ya que indica cuanta electricidad se consume o se va a consumir en nuestro país.""", unsafe_allow_html=True)
     
-    st.markdown(body = """Es por ello que hemos desarrollado una herramienta que ofrece una aproximación a la que
+    st.markdown(body = """<p style='font-size: 1.2em; text-align: justify; margin: 10px 0;'>Es por ello que hemos desarrollado una herramienta que ofrece una aproximación a la que
                           será la demanda energética de los próximos días. Dicha herramienta se basa en un modelo
                           de Machine learning (cuyos detalles se especifican más adelante) entrenado con datos
                           extraidos de la API REData, que permite extraer datos en bruto de los movimientos de 
@@ -58,38 +58,38 @@ def modelo():
                           unsafe_allow_html=True)
 
 
-    st.markdown(body = """A continuación puedes conocer en mayor profundidad el modelo 
-                          o utilizarlo para predecir la evolución de la demanda eléctrica.""")
+    st.markdown(body = """<p style='font-size: 1.2em; text-align: justify; margin: 10px 0;'>A continuación puedes conocer en mayor profundidad el modelo 
+                          o utilizarlo para predecir la evolución de la demanda eléctrica.""", unsafe_allow_html=True)
 
     tabs1, tabs2 = st.tabs(["📘:blue[Explicación técnica del modelo]", "⚡:blue[Evolución de la demanda eléctrica]"])
     with tabs1:
         
-        st.markdown("<h1 style='text-align: center; color: skyblue; font-size: 2rem;'>Explicación técnica del modelo </h1>", unsafe_allow_html=True)
+        st.markdown("<h1 style=' color: skyblue; font-size: 2rem;'>Explicación técnica del modelo </h1>", unsafe_allow_html=True)
 
         st.markdown("<h1 style='text-align: left; color: skyblue; font-size: 1rem;'>Obtención de datos y preparación de los mismos para su uso en el modelo </h1>", unsafe_allow_html=True)
 
-        st.markdown(body = """Los datos utilizados para entrenar el modelo han sido extraídos, 
+        st.markdown(body = """<p style='font-size: 1.2em; text-align: justify; margin: 10px 0;'>Los datos utilizados para entrenar el modelo han sido extraídos, 
                            como ya se ha mencionado, de la API de REData. En concreto, como las predicciones del
                            modelo debían centrarse en la demanda eléctrica a futuro, se reaprovechó el código
                            utilizado para obtener el histórico de la demanda hasta el momento, utilizando los 
-                           mismos datos que aquellos empleados para mostrar este.""")
+                           mismos datos que aquellos empleados para mostrar este.""", unsafe_allow_html=True)
         
-        st.markdown(body = """Una vez obtenidos los datos, se revisó la posible existencia de NaN's y/o outliers.
-                           Al no haber ninguno, no hubo necesidad de hacer más limpieza de datos.""")
+        st.markdown(body = """<p style='font-size: 1.2em; text-align: justify; margin: 10px 0;'>Una vez obtenidos los datos, se revisó la posible existencia de NaN's y/o outliers.
+                           Al no haber ninguno, no hubo necesidad de hacer más limpieza de datos.""", unsafe_allow_html=True)
 
-        st.markdown(body = """Para el preprocesado, se eliminó la columna de las fechas, dejando solo la de los valores,
+        st.markdown(body = """<p style='font-size: 1.2em; text-align: justify; margin: 10px 0;'>Para el preprocesado, se eliminó la columna de las fechas, dejando solo la de los valores,
                             que es la que nos interesa de cara al entrenamiento del modelo. Para evitar el data leakage,
                             antes de crear las ventanas de tamaño T, se dividió el total de datos en conjuntos de train y 
                             test, dejando en el conjunto de test los datos únicamente del último mes y en el de train
                             el resto del histórico. Tras esto, se escalaron los datos de ambos conjuntos y se organizaron 
                             en ventanas de tamaño T=10 para darles el formato más adecuado de cara al entrenamiento
-                            del modelo.""")
+                            del modelo.""", unsafe_allow_html=True)
 
         st.markdown("<h1 style='text-align: left; color: skyblue; font-size: 1rem;'>Creación del modelo </h1>", unsafe_allow_html=True)
 
-        st.markdown(body = """Tras la realización de múltiples pruebas, en las que se cambiaron la capa
+        st.markdown(body = """<p style='font-size: 1.2em; text-align: justify; margin: 10px 0;'>Tras la realización de múltiples pruebas, en las que se cambiaron la capa
                             recurrente, el tipo de pérdida y el learning rate, finalmente la arquitectura que vimos
-                            que daba mejores resultados fue la siguiente:""")
+                            que daba mejores resultados fue la siguiente:""", unsafe_allow_html=True)
         
         code = '''  model = Sequential()
 
@@ -106,16 +106,16 @@ def modelo():
 
         st.code(code, language='python')
 
-        st.markdown(body = """Como se puede observar, la capa recurrente es una LSTM, ya que al tratarse 
+        st.markdown(body = """<p style='font-size: 1.2em; text-align: justify; margin: 10px 0;'>Como se puede observar, la capa recurrente es una LSTM, ya que al tratarse 
                            de un modelo de series temporales, es importante que el modelo sea capaz de recordar 
                            a largo plazo; el tipo de activación es relu, ya que no va a haber en principio valores negativos;
                            el optimizador es adam, ya que queríamos probar con él diferentes learning rates, pero 
                            finalmente vimos que el que mejor funcionaba era el que viene por defecto, por eso no viene especificado; 
-                           por último, la pérdida que utilizamos fue msle.""")
+                           por último, la pérdida que utilizamos fue msle.""", unsafe_allow_html=True)
 
 
-        st.markdown(body = """Una vez escogida la arquitectura a utilizar se entrenó al modelo utilizando para ello 100 épocas, 
-                           dando como resultado la siguiente pérdida:""")
+        st.markdown(body = """<p style='font-size: 1.2em; text-align: justify; margin: 10px 0;'>Una vez escogida la arquitectura a utilizar se entrenó al modelo utilizando para ello 100 épocas, 
+                           dando como resultado la siguiente pérdida:""", unsafe_allow_html=True)
         st.markdown(body = """ """)
 
         #st.image("../sources/perdida_modelo.png", width=450)
@@ -126,9 +126,9 @@ def modelo():
         
 
         st.markdown(body = """ """)
-        st.markdown(body = """Viendo que los resultados obtenidos eran satisfactorios, se hizo el 1-step y el 
+        st.markdown(body = """<p style='font-size: 1.2em; text-align: justify; margin: 10px 0;'>Viendo que los resultados obtenidos eran satisfactorios, se hizo el 1-step y el 
                             multiple step como comprobación de un caso de aplicación del modelo. Tras esto, 
-                            considerando al modelo lo suficientemente bueno, se exportó para su uso en la web. """)
+                            considerando al modelo lo suficientemente bueno, se exportó para su uso en la web. """, unsafe_allow_html=True)
         st.markdown(body = """ """)
 
         col_1,col_2 = st.columns((1,1))
@@ -143,15 +143,15 @@ def modelo():
 
 
     with tabs2:
-        st.markdown("<h1 style='text-align: center; color: skyblue; font-size: 2rem;'>Evolución de la demanda eléctrica </h1>", unsafe_allow_html=True)
+        st.markdown("<h1 style=' color: skyblue; font-size: 2rem;'>Evolución de la demanda eléctrica </h1>", unsafe_allow_html=True)
 
-        st.markdown(body = """Aquí se mostrará la predicción de tantos días como se indique a continuación del último día 
+        st.markdown(body = """<p style='font-size: 1.2em; text-align: justify; margin: 10px 0;'>Aquí se mostrará la predicción de tantos días como se indique a continuación del último día 
                         de actualización de la página, o de sus equivalentes en años anteriores 
-                        si se ha seleccionado otro año.""")
-        st.markdown(body = """En la segunda gráfica se mostrará esa misma predicción, 
-                           pero integrada en la evolución de la demanda hasta ese momento""")
-        st.markdown(body = """Tarda unos segundo en cargar, y si se cambian los parámetros 
-                              hay que volver a esperar unos segundos.""")
+                        si se ha seleccionado otro año.""", unsafe_allow_html=True)
+        st.markdown(body = """<p style='font-size: 1.2em; text-align: justify; margin: 10px 0;'>En la segunda gráfica se mostrará esa misma predicción, 
+                           pero integrada en la evolución de la demanda hasta ese momento""", unsafe_allow_html=True)
+        st.markdown(body = """<p style='font-size: 1.2em; text-align: justify; margin: 10px 0;'>Tarda unos segundo en cargar, y si se cambian los parámetros 
+                              hay que volver a esperar unos segundos.""", unsafe_allow_html=True)
 
 
         años = [2024, 2023, 2022]
