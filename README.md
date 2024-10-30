@@ -82,4 +82,4 @@ Es por ello que hemos desarrollado una herramienta que ofrece una aproximación 
 <div align="center"> </div>
 En definitiva, este proyecto no solo refleja nuestro aprendizaje y habilidades técnicas, sino también el potencial del análisis de datos en la optimización de sectores tan cruciales como el energético, demostrando la relevancia y el impacto que la ciencia de datos y el aprendizaje automático pueden tener en áreas de gran importancia económica y social.
 
-De cara al futuro algo que podríamos mejorar o añadir sería hacer predicciones sobre el resto de categorías (balance, generación, intercambio) e incluso perfeccionar la demanda por comunidades autónomas al mostrar gráficas comparativa mensual de la demanda energética por comunidades autónomas.
+De cara al futuro algo que podríamos mejorar o añadir sería hacer predicciones sobre el resto de categorías (balance, generación, intercambio) e incluso perfeccionar la demanda por comunidades autónomas al mostrar gráficas comparativa mensual de la demanda energética por comunidades autónomas españolas.
