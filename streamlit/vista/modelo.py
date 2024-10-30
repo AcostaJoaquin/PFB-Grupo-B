@@ -123,8 +123,8 @@ def modelo():
         img = Image.open('sources/perdida_modelo.png')
         col1, col2, col3 = st.columns([1, 2, 1])
         with col2:
-            st.image(img, use_column_width=True)
-        
+            st.image(img, width=500)
+
 
         st.markdown(body = """ """)
         st.markdown(body = """<p style='font-size: 1.2em; text-align: justify; margin: 10px 0;'>Viendo que los resultados obtenidos eran satisfactorios, se hizo el 1-step y el 
@@ -135,12 +135,14 @@ def modelo():
         col_1,col_2 = st.columns((1,1))
 
         col_1.markdown(body = """**Predicciones 1-step**""")
-
-        col_1.image("sources/1-step_modelo.png", width=400)
+        
+        img1 = Image.open("sources/1-step_modelo.png")
+        col_1.image(img1, width=400)
 
         col_2.markdown(body = """**Predicciones multiple step**""")
-
-        col_2.image("sources/multiple_step_modelo.png", width=400)
+        
+        img2 = Image.open("sources/multiple_step_modelo.png")
+        col_2.image(img2, width=400)
 
 
     with tabs2:
