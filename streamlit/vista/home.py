@@ -10,6 +10,7 @@ import pickle
 from tensorflow.keras.models import load_model
 import os
 import cv2
+from PIL import Image
 
 selected_time = '30 días'
 selected_year = 2024
@@ -20,10 +21,12 @@ def inicio_app():
     col_img, col_tit = st.columns((0.2, 1.6))
 
     # Título con logo
-    logo = cv2.imread(filename="../sources/logo.png")
-    logo = cv2.cvtColor(logo, cv2.COLOR_BGR2RGB)
-    logo = cv2.resize(logo, (200, 200))
-    col_img.image(logo, use_column_width='always')
+    #logo = cv2.imread(filename="../sources/logo.png")
+    #logo = cv2.cvtColor(logo, cv2.COLOR_BGR2RGB)
+    #logo = cv2.resize(logo, (200, 200))
+    img = Image.open('../sources/logo.png')
+    st.image(img, use_column_width=True)
+    col_img.image(img, use_column_width='always')
     col_tit.markdown(
         "<h1 style='margin-top: 15px; color: skyblue; font-size: 3em;'>"
         "Proyecto cuadro de mando de la red eléctrica de España</h1>",
