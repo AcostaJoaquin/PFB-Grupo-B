@@ -24,7 +24,7 @@ def inicio_app():
     #logo = cv2.imread(r"../sources/logo.png")
     #logo = cv2.cvtColor(logo, cv2.COLOR_BGR2RGB)
     #logo = cv2.resize(logo, (200, 200))
-    img = Image.open('../../sources/logo.png')
+    img = Image.open('../sources/logo.png')
     #col_img.image('../sources/logo.png')
     col_img.image(img, use_column_width='always')
     col_tit.markdown(
