@@ -4,6 +4,7 @@ import os
 from datetime import datetime, timedelta
 import pytz
 import plotly.express as px
+from IPython.display import display
 
 ## MAPAS ##
 import folium
@@ -48,11 +49,11 @@ def intercambio_app(selected_time,selected_year):
 
     #Creacion del mapa
 
-    from IPython.display import display
+    
 
     spain_map = folium.Map(location = [españa_alt, españa_lat],
                        zoom_start= 5,
-                       tiles = 'Esri Worldimagery',
+                       tiles = 'CartoDB Dark_Matter',
                        width='600px',
                        height='600px'
                        )

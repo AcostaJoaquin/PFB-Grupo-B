@@ -11,10 +11,10 @@ def informacion_app():
     col_img, col_tit = st.columns((0.2, 1.6))
 
     # Título con logo
-    logo = cv2.imread(filename="../sources/logo.png")
+    logo = cv2.imread(filename="sources/logo.png")
     logo = cv2.cvtColor(logo, cv2.COLOR_BGR2RGB)
     logo = cv2.resize(logo, (200, 200))
-    col_img.image(logo, use_column_width='always')
+    col_img.image(logo, use_column_width=True)
     col_tit.markdown(
         "<h1 style='margin-top: 15px; color: skyblue; font-size: 3em;'>"
         "Más detalles sobre los creadores</h1>",
@@ -33,7 +33,7 @@ def informacion_app():
 
     with columna_diego:
         st.header(":blue[Diego Díaz]")
-        diego = cv2.imread(filename = "../sources/Diego.png")
+        diego = cv2.imread(filename = "sources/Diego.png")
         diego = cv2.cvtColor(diego, cv2.COLOR_BGR2RGB)
         diego = cv2.resize(diego, (width, height))
         st.image(diego)
@@ -49,7 +49,7 @@ def informacion_app():
     #### Luis #####
     with columna_luis:
         st.header(":blue[Luis M. Guerrero]")
-        luis = cv2.imread(filename = "../sources/Luis.png")
+        luis = cv2.imread(filename = "sources/Luis.png")
         luis = cv2.cvtColor(luis, cv2.COLOR_BGR2RGB)
         luis = cv2.resize(luis, (width, height))
         st.image(luis)
@@ -64,7 +64,7 @@ def informacion_app():
     ### Víctor Manuel ###
     with columna_victorm:
         st.header(":blue[Victor M. Harillo]")
-        victorm = cv2.imread(filename = "../sources/Victor.png")
+        victorm = cv2.imread(filename = "sources/Victor.png")
         victorm = cv2.cvtColor(victorm, cv2.COLOR_BGR2RGB)
         victorm = cv2.resize(victorm, (width, height))
         st.image(victorm)
@@ -79,7 +79,7 @@ def informacion_app():
     ### Joaquin ############
     with columna_joaquin:
         st.header(":blue[Joaquín Acosta]")
-        joaquin = cv2.imread(filename = "../sources/joaquin.png")
+        joaquin = cv2.imread(filename = "sources/joaquin.png")
         joaquin = cv2.cvtColor(joaquin, cv2.COLOR_BGR2RGB)
         joaquin = cv2.resize(joaquin, (width, height))
         st.image(joaquin)

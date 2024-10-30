@@ -120,7 +120,7 @@ def modelo():
         st.markdown(body = """ """)
 
         #st.image("../sources/perdida_modelo.png", width=450)
-        img = Image.open('../sources/perdida_modelo.png')
+        img = Image.open('sources/perdida_modelo.png')
         col1, col2, col3 = st.columns([1, 2, 1])
         with col2:
             st.image(img, use_column_width=True)
@@ -136,11 +136,11 @@ def modelo():
 
         col_1.markdown(body = """**Predicciones 1-step**""")
 
-        col_1.image("../sources/1-step_modelo.png", width=400)
+        col_1.image("sources/1-step_modelo.png", width=400)
 
         col_2.markdown(body = """**Predicciones multiple step**""")
 
-        col_2.image("../sources/multiple_step_modelo.png", width=400)
+        col_2.image("sources/multiple_step_modelo.png", width=400)
 
 
     with tabs2:
