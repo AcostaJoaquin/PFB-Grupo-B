@@ -35,7 +35,7 @@ def inicio_app():
 
     # Imagen de banner con espaciado adicional
     st.markdown("<br>", unsafe_allow_html=True)
-    st.image("../sources/Banner_4.png")
+    st.image("sources/Banner_4.png")
 
     # Columnas para el texto introductorio
     col_1, col_2 = st.columns((1, 0.2))
