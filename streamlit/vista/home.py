@@ -21,12 +21,12 @@ def inicio_app():
     col_img, col_tit = st.columns((0.2, 1.6))
 
     # Título con logo
-    logo = cv2.imread(r"../sources/logo.png")
-    logo = cv2.cvtColor(logo, cv2.COLOR_BGR2RGB)
-    logo = cv2.resize(logo, (200, 200))
-    #img = Image.open('../sources/logo.png')
+    #logo = cv2.imread(r"../sources/logo.png")
+    #logo = cv2.cvtColor(logo, cv2.COLOR_BGR2RGB)
+    #logo = cv2.resize(logo, (200, 200))
+    img = Image.open('../../sources/logo.png')
     #col_img.image('../sources/logo.png')
-    col_img.image(logo, use_column_width='always')
+    col_img.image(img, use_column_width='always')
     col_tit.markdown(
         "<h1 style='margin-top: 15px; color: skyblue; font-size: 3em;'>"
         "Proyecto cuadro de mando de la red eléctrica de España</h1>",
