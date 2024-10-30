@@ -2,6 +2,7 @@ import streamlit as st
 import pandas as pd
 import os
 import cv2
+from PIL import Image
 
 
 
@@ -33,10 +34,8 @@ def informacion_app():
 
     with columna_diego:
         st.header(":blue[Diego Díaz]")
-        diego = cv2.imread(filename = "sources/Diego.png")
-        diego = cv2.cvtColor(diego, cv2.COLOR_BGR2RGB)
-        diego = cv2.resize(diego, (width, height))
-        st.image(diego)
+        img1 = Image.open('sources/Diego.png')
+        st.image(img1)
 
         # Links:
         linkedin, github = st.columns((1,1))
@@ -49,10 +48,9 @@ def informacion_app():
     #### Luis #####
     with columna_luis:
         st.header(":blue[Luis M. Guerrero]")
-        luis = cv2.imread(filename = "sources/Luis.png")
-        luis = cv2.cvtColor(luis, cv2.COLOR_BGR2RGB)
-        luis = cv2.resize(luis, (width, height))
-        st.image(luis)
+        img2 = Image.open('sources/luis.png')
+        st.image(img2)
+        
 
         #Links:
         linkedin, github = st.columns((1,1))
@@ -64,9 +62,7 @@ def informacion_app():
     ### Víctor Manuel ###
     with columna_victorm:
         st.header(":blue[Victor M. Harillo]")
-        victorm = cv2.imread(filename = "sources/Victor.png")
-        victorm = cv2.cvtColor(victorm, cv2.COLOR_BGR2RGB)
-        victorm = cv2.resize(victorm, (width, height))
+        victorm = Image.open("sources/Victor.png")
         st.image(victorm)
 
         #Links:
@@ -79,9 +75,7 @@ def informacion_app():
     ### Joaquin ############
     with columna_joaquin:
         st.header(":blue[Joaquín Acosta]")
-        joaquin = cv2.imread(filename = "sources/joaquin.png")
-        joaquin = cv2.cvtColor(joaquin, cv2.COLOR_BGR2RGB)
-        joaquin = cv2.resize(joaquin, (width, height))
+        joaquin = Image.open("sources/joaquin.png")
         st.image(joaquin)
 
         #Links:
