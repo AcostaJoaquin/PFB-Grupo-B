@@ -26,7 +26,7 @@ def inicio_app():
     #logo = cv2.resize(logo, (200, 200))
     #img = Image.open('../sources/logo.png')
     #col_img.image('../sources/logo.png')
-    col_img.image(logo, use_column_width='always')
+    #col_img.image(logo, use_column_width='always')
     col_tit.markdown(
         "<h1 style='margin-top: 15px; color: skyblue; font-size: 3em;'>"
         "Proyecto cuadro de mando de la red eléctrica de España</h1>",
@@ -34,8 +34,8 @@ def inicio_app():
     )
 
     # Imagen de banner con espaciado adicional
-    st.markdown("<br>", unsafe_allow_html=True)
-    st.image("../sources/Banner_4.png")
+    #st.markdown("<br>", unsafe_allow_html=True)
+    #st.image("../sources/Banner_4.png")
 
     # Columnas para el texto introductorio
     col_1, col_2 = st.columns((1, 0.2))
